@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Анти-кликджекинг: X-Frame-Options пропал на GitHub Pages -> фрейм-бастер (frame-ancestors в <meta> игнорируется). -->
+    <script src="js/frame-buster.js?v=4.0.24"></script>
+    <title>Оформление заказа | KatyaFit</title>
+    <meta name="description" content="Оформление заказа на индивидуальное ведение и планы питания от Екатерины.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://katyafit.ru/cart.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Оформление заказа | KatyaFit">
+    <meta property="og:description" content="Оформление заказа на индивидуальное ведение и планы питания от Екатерины.">
+    <meta property="og:url" content="https://katyafit.ru/cart.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg?v=4.0.24" type="image/svg+xml">
+    <link rel="icon" href="favicon.png?v=4.0.24" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4.0.24">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#1a1f1c">
+
+    <!-- Preconnect for fonts (#23) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/base.css?v=4.0.24">
+    <link rel="stylesheet" href="css/home.css?v=4.0.24">
+    <link rel="stylesheet" href="css/sections.css?v=4.0.24">
+    <link rel="stylesheet" href="css/forms.css?v=4.0.24">
+    <link rel="stylesheet" href="css/footer.css?v=4.0.24">
+    <link rel="stylesheet" href="css/widgets.css?v=4.0.24">
+    <link rel="stylesheet" href="css/trainer.css?v=4.0.24">
+    <link rel="stylesheet" href="css/trainer-experience.css?v=4.0.24">
+
+    <!-- CSP (#9) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https://mc.yandex.ru; connect-src 'self' https://api.telegram.org https://mc.yandex.ru https://*.ingest.de.sentry.io; frame-ancestors 'none';">
+
+    <!-- Sentry: автосбор JS-ошибок -> Telegram (проект landing, org katyafitru; тот же воркфлоу, что у кабинета) -->
+    <script src="js/vendor/sentry.js?v=4.0.24"></script>
+    <script src="js/sentry-init.js?v=4.0.24"></script>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+</head>
+<body class="header-dark">
+
+    <noscript>
+        <div style="text-align:center; padding:2rem; background:#f9f7f4; color:#2a2c2b; font-family:sans-serif;">
+            Для корректной работы сайта необходимо включить JavaScript в настройках браузера.
+        </div>
+    </noscript>
+
+    <main class="main-subpage">
+
+        <!-- Cart & Checkout Section -->
+        <section class="section" id="cart-section">
+            <div class="container">
+                <span class="section-badge">Ваш выбор</span>
+                <!-- #26: h1 на подстранице -->
+                <h1 class="section-title">Оформление <span>заказа</span></h1>
+
+                <div class="cart-layout" id="cartLayout">
+                    <!-- Selected Plan details (Dynamic) -->
+                    <div class="cart-items-card" id="selectedPlanContainer">
+                        <!-- Dynamic selected plan details go here -->
+                    </div>
+
+                    <!-- Cart Summary & Order Form -->
+                    <div class="cart-summary-card" id="cartSummaryCard">
+                        <h3 class="cart-summary-title">Данные заказа</h3>
+
+                        <div class="summary-row total">
+                            <span id="summary-label">Итого к оплате:</span>
+                            <span id="summary-total">0 ₽</span>
+                        </div>
+
+                        <!-- Checkout Form: email для чека/доступа + согласие на ПДн (#6 honeypot, #14 согласие) -->
+                        <form class="contact-form contact-form--cart" id="checkoutForm" novalidate>
+
+                            <!-- Honeypot поле (#6: защита от ботов — скрыто через CSS) -->
+                            <div class="form-honeypot" aria-hidden="true">
+                                <label for="hp-website">Оставьте это поле пустым</label>
+                                <input type="text" id="hp-website" name="website" autocomplete="off" tabindex="-1">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="order-email">Email для чека и доступа</label>
+                                <input class="form-input" type="email" id="order-email" name="email" required
+                                       maxlength="254"
+                                       placeholder="you@example.com"
+                                       autocomplete="email"
+                                       inputmode="email">
+                                <span class="form-hint" id="email-hint">На него придёт чек об оплате и доступ в личный кабинет.</span>
+                                <span class="form-error" id="error-email" role="alert"></span>
+                            </div>
+
+                            <!-- Согласие на обработку ПДн (#14) -->
+                            <div class="form-group form-group--consent">
+                                <label class="form-checkbox-label" for="order-consent">
+                                    <input type="checkbox" id="order-consent" name="consent" required>
+                                    <span>Я соглашаюсь с <a href="privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</span>
+                                </label>
+                                <span class="form-error" id="error-consent" role="alert"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit" id="submitOrderBtn">
+                                Купить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section (Map replaced with direct links) -->
+        <section class="section section-light" id="contacts">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="section-badge">Связь со мной</span>
+                        <h2 class="section-title">Мои <span>контакты</span></h2>
+                        <p class="contact-intro">Я всегда на связи — задайте любой вопрос по программе или питанию в мессенджере, или позвоните напрямую.</p>
+                    </div>
+
+                    <div class="contact-links-container">
+                        <a href="https://instagram.com/kkatyafit" target="_blank" rel="noopener noreferrer" class="contact-link-card" id="contact-link-instagram">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            </div>
+                            <span class="contact-label">Instagram</span>
+                        </a>
+                        <a href="https://t.me/kkatyafit" target="_blank" rel="noopener noreferrer" class="contact-link-card" id="contact-link-telegram">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                            </div>
+                            <span class="contact-label">Telegram</span>
+                        </a>
+                        <a href="https://max.ru/u/f9LHodD0cOL_nPAxwNr-JeUQYJxZEZRCx8kKf3l1foQo6MIj9U1iUxHugfk" target="_blank" rel="noopener noreferrer" class="contact-link-card" id="contact-link-max">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10.5h1.5l2.5-3 2.5 3H16" stroke-width="1.75"/></svg>
+                            </div>
+                            <span class="contact-label">Max</span>
+                        </a>
+                        <a href="tel:+79247705722" class="contact-link-card" id="contact-link-phone">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact-label">+7 (924) 770-57-22</span>
+                                <span class="contact-note">Telegram · Max</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Success Overlay Modal (hidden by default) -->
+    <div class="order-success-overlay" id="successOverlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="successTitle" tabindex="-1">
+        <div class="order-success-card">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check" style="width: 40px; height: 40px;"><path d="M20 6 9 17l-5-5" /></svg>
+            </div>
+            <h2 id="successTitle">Заявка принята!</h2>
+            <p class="success-text" id="success-text">Спасибо! Заявка отправлена на <strong id="success-client-email"></strong>. Екатерина свяжется с вами в ближайшее время, чтобы помочь с оплатой и выдать доступ в личный кабинет.</p>
+            <button class="btn btn-primary btn-submit" id="success-close-btn">Вернуться на главную</button>
+        </div>
+    </div>
+
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/cart.js" defer></script>
+</body>
+</html>

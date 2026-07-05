@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Анти-кликджекинг: X-Frame-Options пропал на GitHub Pages -> фрейм-бастер (frame-ancestors в <meta> игнорируется). -->
+    <script src="js/frame-buster.js?v=4.0.24"></script>
+    <title>Вопросы и ответы | Екатерина Пономарева (@kkatyafit)</title>
+    <meta name="description" content="Ответы на популярные вопросы о домашних тренировках, планах питания и формате ведения Екатерины Пономаревой.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://katyafit.ru/faq.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Вопросы и ответы | Екатерина Пономарева (@kkatyafit)">
+    <meta property="og:description" content="Ответы на популярные вопросы о тренировках и питании.">
+    <meta property="og:image" content="https://katyafit.ru/katya_hero.webp">
+    <meta property="og:url" content="https://katyafit.ru/faq.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg?v=4.0.24" type="image/svg+xml">
+    <link rel="icon" href="favicon.png?v=4.0.24" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4.0.24">
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#1a1f1c">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/base.css?v=4.0.24">
+    <link rel="stylesheet" href="css/home.css?v=4.0.24">
+    <link rel="stylesheet" href="css/sections.css?v=4.0.24">
+    <link rel="stylesheet" href="css/forms.css?v=4.0.24">
+    <link rel="stylesheet" href="css/footer.css?v=4.0.24">
+    <link rel="stylesheet" href="css/widgets.css?v=4.0.24">
+    <link rel="stylesheet" href="css/trainer.css?v=4.0.24">
+    <link rel="stylesheet" href="css/trainer-experience.css?v=4.0.24">
+
+    <!-- CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https://mc.yandex.ru; connect-src 'self' https://api.telegram.org https://mc.yandex.ru https://*.ingest.de.sentry.io; frame-ancestors 'none';">
+
+    <!-- Sentry: автосбор JS-ошибок -> Telegram (проект landing, org katyafitru; тот же воркфлоу, что у кабинета) -->
+    <script src="js/vendor/sentry.js?v=4.0.24"></script>
+    <script src="js/sentry-init.js?v=4.0.24"></script>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+    <!-- Structured Data (JSON-LD): расширенный сниппет FAQ в поиске -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Мне придется полностью отказаться от сладкого и мучного?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Нет, я против жестких запретов. В моих планах питания действует правило 80/20: 80% рациона составляют цельные нутритивно-плотные продукты, а 20% вы можете заполнять любимыми сладостями или выпечкой. Это помогает избегать срывов и худеть комфортно." }
+            },
+            {
+                "@type": "Question",
+                "name": "Нужно ли мне будет много готовить?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Все рецепты в планах питания подобраны с расчетом на быструю готовку (в среднем 15-25 минут). Продукты используются самые простые и доступные в любом магазине. Вы сможете готовить сразу на несколько дней вперед." }
+            },
+            {
+                "@type": "Question",
+                "name": "А если мне не понравится какое-то блюдо или продукт?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Для этого в плане предусмотрен удобный конструктор замен. Например, вы можете легко заменить рыбу на птицу или гречку на рис с сохранением баланса белков, жиров и углеводов. Вы едите только то, что вам действительно нравится." }
+            },
+            {
+                "@type": "Question",
+                "name": "Как строится наше взаимодействие на ведении?",
+                "acceptedAnswer": { "@type": "Answer", "text": "После оплаты вы заполняете подробную анкету о своем здоровье, целях и вкусах. В течение 2 дней я разрабатываю ваш план питания. Затем мы подключаемся к чату поддержки, где вы присылаете отчеты, задаете вопросы, а куратор или я корректируем ваш рацион в реальном времени." }
+            },
+            {
+                "@type": "Question",
+                "name": "Я уже пробовала похудеть раньше — почему сейчас получится?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Потому что большинство диет созданы для идеальных условий. Моя система — для реальной жизни: с работой, семьёй и иногда пиццей в пятницу. Именно поэтому 200+ женщин прошли её и не сорвались." }
+            },
+            {
+                "@type": "Question",
+                "name": "Что если программа мне не подойдёт?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Напишите мне в течение 48 часов после оплаты — разберёмся вместе. Я заинтересована в вашем результате не меньше вашего." }
+            },
+            {
+                "@type": "Question",
+                "name": "Сколько времени в день это займёт?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Тренировка — 30–40 минут 3 раза в неделю. Приготовление еды по плану — 15–25 минут. В остальное время программа работает фоном через трекер привычек." }
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="header-dark">
+
+    <noscript>
+        <div style="text-align:center; padding:2rem; background:#f9f7f4; color:#2a2c2b; font-family:sans-serif;">
+            Для корректной работы сайта необходимо включить JavaScript в настройках браузера.
+        </div>
+    </noscript>
+
+    <main class="main-subpage">
+
+        <!-- FAQ Page Section -->
+        <section class="section" id="faq">
+            <div class="container">
+                <span class="section-badge">Вопросы и ответы</span>
+                <h1 class="section-title">Отвечаю на <span>ваши сомнения</span></h1>
+
+                <div class="faq-max" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-list">
+                        <details class="faq-item" id="faq-1" open>
+                            <summary>Мне придется полностью отказаться от сладкого и мучного?</summary>
+                            <div class="faq-answer">
+                                <p>Нет, я против жестких запретов. В моих планах питания действует правило 80/20: 80% рациона составляют цельные нутритивно-плотные продукты, а 20% вы можете заполнять любимыми сладостями или выпечкой. Это помогает избегать срывов и худеть комфортно.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" id="faq-2">
+                            <summary>Нужно ли мне будет много готовить?</summary>
+                            <div class="faq-answer">
+                                <p>Все рецепты в планах питания подобраны с расчетом на быструю готовку (в среднем 15-25 минут). Продукты используются самые простые и доступные в любом магазине. Вы сможете готовить сразу на несколько дней вперед.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" id="faq-3">
+                            <summary>А если мне не понравится какое-то блюдо или продукт?</summary>
+                            <div class="faq-answer">
+                                <p>Для этого в плане предусмотрен удобный конструктор замен. Например, вы можете легко заменить рыбу на птицу или гречку на рис с сохранением баланса белков, жиров и углеводов. Вы едите только то, что вам действительно нравится.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" id="faq-4">
+                            <summary>Как строится наше взаимодействие на ведении?</summary>
+                            <div class="faq-answer">
+                                <p>После оплаты вы заполняете подробную анкету о своем здоровье, целях и вкусах. В течение 2 дней я разрабатываю ваш план питания. Затем мы подключаемся к чату поддержки, где вы присылаете отчеты, задаете вопросы, а куратор или я корректируем ваш рацион в реальном времени.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" id="faq-5">
+                            <summary>Я уже пробовала похудеть раньше — почему сейчас получится?</summary>
+                            <div class="faq-answer">
+                                <p>Потому что большинство диет созданы для идеальных условий. Моя система — для реальной жизни: с работой, семьёй и иногда пиццей в пятницу. Именно поэтому 200+ женщин прошли её и не сорвались.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" id="faq-6">
+                            <summary>Что если программа мне не подойдёт?</summary>
+                            <div class="faq-answer">
+                                <p>Напишите мне в течение 48 часов после оплаты — разберёмся вместе. Я заинтересована в вашем результате не меньше вашего.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" id="faq-7">
+                            <summary>Сколько времени в день это займёт?</summary>
+                            <div class="faq-answer">
+                                <p>Тренировка — 30–40 минут 3 раза в неделю. Приготовление еды по плану — 15–25 минут. В остальное время программа работает фоном через трекер привычек.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section trainer-cta-section" id="faq-cta">
+            <div class="container">
+                <div class="trainer-cta-block">
+                    <span class="section-badge">Остались сомнения?</span>
+                    <h2 class="section-title">Проще всего — <span>попробовать бесплатно</span></h2>
+                    <p class="trainer-cta-text">Оцените формат тренировок и меню на тест-драйве за&nbsp;0&nbsp;₽ или сразу выберите свой тариф.</p>
+                    <div class="trainer-cta-btns">
+                        <a href="cart.html?plan=free" class="btn btn-primary" id="faq-to-free">Попробовать бесплатно</a>
+                        <a href="index.html#rates" class="btn btn-secondary" id="faq-to-rates">Смотреть тарифы</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

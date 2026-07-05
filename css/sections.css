@@ -1,0 +1,395 @@
+/* ============================================================
+   KatyaFit — 03 sections: for-whom, benefits, steps, reviews
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* For Whom (Target) Section */
+.target-list {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.target-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.25rem 3rem;
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.target-item:hover {
+    border-color: rgba(201, 169, 110, 0.2);
+    border-left: 3px solid var(--accent-coral);
+    box-shadow: var(--shadow-hover);
+    transform: translateX(6px);
+}
+
+.target-icon {
+    color: var(--accent-coral);
+    background: var(--accent-coral-light);
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.target-item:hover .target-icon {
+    background-color: var(--accent-coral);
+    color: var(--bg-pure);
+    transform: scale(1.08);
+}
+
+.target-item p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--accent-forest);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Benefits Grid (Program Content) */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.benefit-card {
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    padding: 3.5rem 3rem;
+    border-radius: 24px;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.benefit-card:hover {
+    border-color: rgba(26, 31, 28, 0.12);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-coral-light);
+    color: var(--accent-coral);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    transition: var(--transition-smooth);
+}
+
+.benefit-card:hover .benefit-icon {
+    background-color: var(--accent-forest);
+    color: var(--bg-pure);
+    box-shadow: 0 6px 16px rgba(26, 31, 28, 0.15);
+}
+
+.benefit-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2;
+}
+
+.benefit-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--accent-forest);
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+/* Steps Grid (How It Works) */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    position: relative;
+}
+
+.steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(12.5% + 32px);
+    right: calc(12.5% + 32px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-coral), var(--accent-champagne));
+    z-index: 0;
+}
+
+.step-card {
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.step-num {
+    width: 64px;
+    height: 64px;
+    background: var(--accent-forest);
+    color: var(--bg-pure);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 auto 1.75rem;
+    font-family: var(--font-ui);
+    box-shadow: 0 8px 20px rgba(26, 31, 28, 0.15);
+    transition: var(--transition-smooth);
+}
+
+.step-card:hover .step-num {
+    transform: scale(1.1);
+    background-color: var(--accent-coral);
+    box-shadow: 0 10px 24px rgba(201, 169, 110, 0.25);
+}
+
+.step-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.step-card p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    max-width: 240px;
+    margin: 0 auto;
+}
+
+/* Reviews Collapsible Block */
+.reviews-collapse {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    width: 100%;
+}
+
+.reviews-collapse.open {
+    max-height: 1500px;
+    opacity: 1;
+}
+
+.reviews-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn-reviews-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    padding: 1rem 2.2rem;
+}
+
+.btn-reviews-toggle .toggle-arrow {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: 0;
+}
+
+.btn-reviews-toggle.active .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+/* Reviews Slider — нативный Scroll Snap */
+.reviews-slider-container {
+    position: relative;
+    padding: 1.5rem 0;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE/Edge */
+    cursor: grab;
+    user-select: none;
+    /* Без touch-action: браузер сам управляет свайпом нативно */
+}
+
+.reviews-track::-webkit-scrollbar {
+    display: none;               /* Chrome/Safari */
+}
+
+.reviews-track:active {
+    cursor: grabbing;
+}
+
+.review-slide {
+    flex: 0 0 100%;              /* не сжимается, ширина = 100% трека */
+    scroll-snap-align: start;    /* привязка к началу каждого слайда */
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    padding: 3.5rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-slide:hover {
+    border-color: rgba(26, 31, 28, 0.12);
+    box-shadow: var(--shadow-hover);
+}
+
+.review-image-wrapper {
+    width: 100%;
+    height: 460px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-milk);
+}
+
+.review-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: var(--transition-smooth);
+}
+
+.review-slide:hover .review-image {
+    transform: scale(1.02);
+}
+
+/* review-headline: styled via class instead of inline */
+.review-headline {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--accent-forest);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.review-rating {
+    display: flex;
+    gap: 6px;
+    color: var(--accent-coral);
+    margin-bottom: 1.5rem;
+}
+
+.review-text {
+    font-style: normal;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-coral-light);
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.review-author-info h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent-forest);
+}
+
+.review-author-info span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+}
+
+.slider-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent-forest);
+    background: transparent;
+    color: var(--accent-forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.slider-btn:hover:not(:disabled) {
+    background-color: var(--accent-forest);
+    color: var(--bg-pure);
+    transform: scale(1.05);
+}
+
+.slider-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-color: var(--border-color);
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0;
+}
+
+.slider-dot:hover {
+    background-color: var(--accent-forest-light);
+    transform: scale(1.2);
+}
+
+.slider-dot.active {
+    background-color: var(--accent-forest);
+    transform: scale(1.2);
+    width: 24px;
+    border-radius: 6px;
+}
+

@@ -1,0 +1,463 @@
+/* ============================================================
+   KatyaFit — 04 forms: FAQ, контакты, формы, корзина, тосты, success-модалка, privacy
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* FAQ Section (Upgraded Accordions) */
+.faq-max {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-pure);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+}
+
+.faq-item:hover {
+    border-color: rgba(26, 31, 28, 0.15);
+    box-shadow: var(--shadow-premium);
+}
+
+.faq-item[open] {
+    border-color: rgba(26, 31, 28, 0.2);
+    box-shadow: var(--shadow-hover);
+}
+
+summary {
+    list-style: none;
+    padding: 2rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-forest);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-fast);
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1f1c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    transition: var(--transition-smooth);
+}
+
+.faq-item[open] summary {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 2rem 2.5rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    background-color: var(--bg-milk);
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Contact Details & Cards on Checkout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.contact-intro {
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.75;
+}
+
+.contact-links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    width: 100%;
+}
+
+.contact-link-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.1rem 1.5rem;
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.contact-link-card:hover {
+    border-color: rgba(201, 169, 110, 0.5);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Шеврон-стрелка справа */
+.contact-link-card::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid var(--text-muted);
+    border-top: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+    margin-left: auto;
+    flex-shrink: 0;
+    opacity: 0.45;
+    transition: var(--transition-smooth);
+}
+
+.contact-link-card:hover::after {
+    border-color: var(--accent-coral);
+    opacity: 1;
+    transform: rotate(45deg) translate(2px, -2px);
+}
+
+.contact-link-card .contact-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(201, 169, 110, 0.08);
+    color: var(--accent-forest);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.contact-link-card:hover .contact-icon {
+    background: var(--accent-coral);
+    color: var(--bg-pure);
+}
+
+.contact-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    display: block;
+}
+
+.contact-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    display: block;
+    margin-top: 0.15rem;
+}
+
+/* Forms */
+.contact-form {
+    background-color: var(--bg-pure);
+    padding: 4rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-premium);
+    border: 1px solid var(--border-color);
+}
+
+.contact-form--cart {
+    padding: 2rem 0 0 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.form-group {
+    margin-bottom: 1.75rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-forest);
+    margin-bottom: 0.6rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1.1rem 1.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    border: 1.5px solid var(--border-color);
+    background-color: var(--bg-milk);
+    color: var(--text-main);
+    border-radius: 12px;
+    transition: var(--transition-smooth);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-coral);
+    background-color: var(--bg-pure);
+    box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.12);
+}
+
+.form-input--error {
+    border-color: #c0392b;
+    background-color: #fff8f8;
+}
+
+.form-error {
+    display: block;
+    font-size: 0.8rem;
+    color: #c0392b;
+    margin-top: 0.4rem;
+    min-height: 1.2rem;
+    font-weight: 600;
+}
+
+.form-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    line-height: 1.5;
+}
+
+.form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group--consent {
+    margin-top: 1rem;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1.6;
+}
+
+.form-checkbox-label input[type="checkbox"] {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-coral);
+    cursor: pointer;
+}
+
+.form-checkbox-label a {
+    color: var(--accent-coral);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Cart / Order Checkout Layout */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.cart-items-card {
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: var(--shadow-premium);
+}
+
+.cart-summary-card {
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: var(--shadow-premium);
+    position: sticky;
+    top: 130px;
+}
+
+.cart-summary-title {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.summary-row.total {
+    border-top: 1.5px dashed var(--border-color);
+    padding-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent-forest);
+}
+
+/* Toast Notification (Upgraded Toast Overlay) */
+.toast-notification {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: var(--accent-forest);
+    color: var(--bg-milk);
+    padding: 1.25rem 2.25rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-hover);
+    z-index: 1000;
+    font-size: 0.95rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 90vw;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toast-notification--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Order Success Modal */
+.order-success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 31, 28, 0.5);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.4s ease;
+}
+
+.order-success-card {
+    background: var(--bg-milk);
+    border-radius: 32px;
+    padding: 5rem 4rem;
+    max-width: 550px;
+    width: 90%;
+    text-align: center;
+    box-shadow: var(--shadow-hover);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.order-success-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.success-text {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.75;
+}
+
+.success-icon {
+    width: 88px;
+    height: 88px;
+    background-color: var(--accent-coral-light);
+    color: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem auto;
+    box-shadow: 0 10px 20px rgba(201, 169, 110, 0.15);
+}
+
+/* Privacy Page */
+.privacy-body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.privacy-body .legal-meta {
+    background: var(--bg-milk);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-coral);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.privacy-body h2 {
+    font-size: 1.35rem;
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.privacy-body h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+}
+
+.privacy-body p,
+.privacy-body li {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+}
+
+.privacy-body ul,
+.privacy-body ol {
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.privacy-body a {
+    color: var(--accent-coral);
+    text-decoration: underline;
+    font-weight: 600;
+}
+

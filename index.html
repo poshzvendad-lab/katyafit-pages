@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Анти-кликджекинг: X-Frame-Options пропал на GitHub Pages -> фрейм-бастер (frame-ancestors в <meta> игнорируется). -->
+    <script src="js/frame-buster.js?v=4.0.24"></script>
+    <title>Екатерина | Фитнес-тренер &amp; Нутрициолог (@kkatyafit)</title>
+    <meta name="description" content="Пошаговая система похудения от Екатерины Пономаревой (@kkatyafit). 12 домашних тренировок, конструктор рациона и трекер привычек. Результат за 4 недели.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://katyafit.ru/">
+ 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="KatyaFit">
+    <meta property="og:title" content="Екатерина | Фитнес-тренер &amp; Нутрициолог (@kkatyafit)">
+    <meta property="og:description" content="Пошаговая система похудения. 12 домашних тренировок, конструктор рациона и трекер привычек. Результат за 4 недели.">
+    <meta property="og:image" content="https://katyafit.ru/katya_hero_profile.webp">
+    <meta property="og:url" content="https://katyafit.ru/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://katyafit.ru/katya_hero_profile.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg?v=4.0.24" type="image/svg+xml">
+    <link rel="icon" href="favicon.png?v=4.0.24" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4.0.24">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#1a1f1c">
+
+    <!-- Preload главного изображения (улучшает LCP) -->
+    <link rel="preload" as="image" href="katya_hero_dark.webp">
+
+    <!-- Preconnect for fonts (#23: moved from @import in CSS to <link> in HTML) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/base.css?v=4.0.24">
+    <link rel="stylesheet" href="css/home.css?v=4.0.24">
+    <link rel="stylesheet" href="css/sections.css?v=4.0.24">
+    <link rel="stylesheet" href="css/forms.css?v=4.0.24">
+    <link rel="stylesheet" href="css/footer.css?v=4.0.24">
+    <link rel="stylesheet" href="css/widgets.css?v=4.0.24">
+    <link rel="stylesheet" href="css/trainer.css?v=4.0.24">
+    <link rel="stylesheet" href="css/trainer-experience.css?v=4.0.24">
+
+    <!-- Content-Security-Policy (#9) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https://mc.yandex.ru; connect-src 'self' https://api.telegram.org https://mc.yandex.ru https://*.ingest.de.sentry.io; frame-ancestors 'none';">
+
+    <!-- Sentry: автосбор JS-ошибок -> Telegram (проект landing, org katyafitru; тот же воркфлоу, что у кабинета) -->
+    <script src="js/vendor/sentry.js?v=4.0.24"></script>
+    <script src="js/sentry-init.js?v=4.0.24"></script>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+    <!-- Structured Data (JSON-LD): не исполняется как скрипт, CSP не блокирует -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://katyafit.ru/#website",
+                "url": "https://katyafit.ru/",
+                "name": "KatyaFit",
+                "inLanguage": "ru-RU"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://katyafit.ru/#person",
+                "name": "Екатерина Пономарева",
+                "jobTitle": "Фитнес-тренер, нутрициолог",
+                "image": "https://katyafit.ru/katya_hero_profile.webp",
+                "url": "https://katyafit.ru/trainer.html",
+                "sameAs": [
+                    "https://t.me/kkatyafit",
+                    "https://www.instagram.com/kkatyafit",
+                    "https://vk.ru/id201181278"
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="theme-dark header-dark">
+
+    <noscript>
+        <div style="text-align:center; padding:2rem; background:#f9f7f4; color:#2a2c2b; font-family:sans-serif;">
+            Для корректной работы сайта необходимо включить JavaScript в настройках браузера.
+        </div>
+    </noscript>
+
+    <!-- SVG Sprite — скрытые символы иконок (1 копия вместо 35) -->
+    <svg style="display:none" aria-hidden="true" focusable="false">
+        <symbol id="icon-star" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>
+        </symbol>
+    </svg>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero hero--dark" id="hero">
+            <div class="hero-editorial">
+
+                <!-- Левая часть: текст -->
+                <div class="hero-content">
+                    <div class="hero-content-inner">
+                        <span class="hero-eyebrow" id="heroBadge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles icon-inline" style="width: 14px; height: 14px;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg> Пошаговая система похудения</span>
+                        <h1 class="hero-title" id="heroTitle">Минус <span class="hero-num">3</span><span class="hero-num hero-dash">–</span><span class="hero-num">7</span> кг за <span class="hero-num">4</span> недели<span class="hero-title-accent">дома, без голода и зала</span></h1>
+                        <p class="hero-subtitle">Авторская система <strong>Екатерины Пономаревой</strong> для&nbsp;женщин, которые устали начинать с&nbsp;понедельника.</p>
+                        <ul class="hero-features" id="heroSub">
+                            <li><span class="hero-feat-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+  <path d="M7 2v20" />
+  <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg></span><span><strong>Без голода и жёстких запретов</strong> — питание по принципу 80/20</span></li>
+                            <li><span class="hero-feat-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z" />
+  <path d="m2.5 21.5 1.4-1.4" />
+  <path d="m20.1 3.9 1.4-1.4" />
+  <path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z" />
+  <path d="m9.6 14.4 4.8-4.8" /></svg></span><span><strong>30–40 минут дома</strong>, 3 раза в неделю — никакого зала</span></li>
+                            <li><span class="hero-feat-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="m9 16 2 2 4-4" /></svg></span><span><strong>Трекер и система контроля</strong> — дисциплина на автопилоте</span></li>
+                        </ul>
+                        <div class="hero-btns">
+                            <a href="#rates" class="btn btn-primary" id="heroCta">Выбрать тариф</a>
+                            <a href="trainer.html" class="btn btn-secondary" id="heroTrainer">О тренере</a>
+                        </div>
+                        <p class="hero-disclaimer">Результат индивидуален и зависит от вас: цифры выше — при условии, что вы питаетесь по плану и следуете программе.</p>
+                    </div>
+                </div>
+
+                <!-- Правая часть: крупное фото в рамке-карточке -->
+                <div class="hero-photo-panel">
+                    <div class="hero-photo-frame">
+                        <span class="hero-photo-decor" aria-hidden="true"></span>
+                        <img src="katya_hero_dark.webp" alt="Екатерина Пономарева | Фитнес-тренер &amp; Нутрициолог" class="hero-photo" loading="eager" fetchpriority="high" width="1023" height="1280" id="heroImg">
+                        <div class="hero-photo-badge" aria-label="Средний результат участниц">
+                            <span class="hero-badge-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span>
+                            <span class="hero-badge-text"><strong>−5 кг</strong>средний результат за месяц</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- For Whom Section -->
+        <section class="section section-light" id="for-whom">
+            <div class="container">
+                <span class="section-badge">Узнайте себя</span>
+                <h2 class="section-title" id="forWhomTitle">Для кого создана <span>эта система?</span></h2>
+                <div class="target-list">
+                    <div class="target-item" id="target-1">
+                        <div class="target-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame" style="width: 28px; height: 28px;"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" /></svg></div>
+                        <p>Ты садишься на очередную диету в понедельник, держишься три дня — и срываешься. Снова.</p>
+                    </div>
+                    <div class="target-item" id="target-2">
+                        <div class="target-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock" style="width: 28px; height: 28px;"><circle cx="12" cy="12" r="10" />
+  <path d="M12 6v6l4 2" /></svg></div>
+                        <p>Ты хочешь заниматься, но между работой и семьёй просто нет окна для поездки в зал.</p>
+                    </div>
+                    <div class="target-item" id="target-3">
+                        <div class="target-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map" style="width: 28px; height: 28px;"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+  <path d="M15 5.764v15" />
+  <path d="M9 3.236v15" /></svg></div>
+                        <p>Ты не хочешь разбираться в калориях и КБЖУ — тебе нужна готовая система, которая просто работает.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Content Section -->
+        <section class="section" id="program-content">
+            <div class="container">
+                <span class="section-badge">Состав программы</span>
+                <h2 class="section-title" id="programTitle">Что вы получите <span>внутри программы?</span></h2>
+                <div class="benefits-grid">
+                    <!-- Card 1 -->
+                    <article class="benefit-card" id="benefit-1">
+                        <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-utensils"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+  <path d="M7 2v20" />
+  <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg></div>
+                        <h3>Не нужно думать, что готовить</h3>
+                        <p>Если не хотите думать — просто берите и делайте. Я составила для вас наглядные примеры рационов на каждый день, где уже подобраны вкусные сочетания продуктов и посчитаны все граммовки.</p>
+                    </article>
+                    <!-- Card 2 -->
+                    <article class="benefit-card" id="benefit-2">
+                        <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-puzzle"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" /></svg></div>
+                        <h3>Ешьте любимое — и всё равно худейте</h3>
+                        <p>Если захотите разнообразия — используйте мою авторскую матрицу питания. Вы получите удобную шпаргалку со списками продуктов. Сможете легко заменять ингредиенты из готового меню на те, что есть в холодильнике, и собирать свою идеальную тарелку за 2 минуты.</p>
+                    </article>
+                    <!-- Card 3 -->
+                    <article class="benefit-card" id="benefit-3">
+                        <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dumbbell"><path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z" />
+  <path d="m2.5 21.5 1.4-1.4" />
+  <path d="m20.1 3.9 1.4-1.4" />
+  <path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z" />
+  <path d="m9.6 14.4 4.8-4.8" /></svg></div>
+                        <h3>Занимайтесь дома, когда удобно вам</h3>
+                        <p>Никаких долгих поездок в зал. 3 раза в неделю по 30–40 минут вы просто включаете тренировку на телефоне или телевизоре — и мы занимаемся вместе от разминки до заминки.</p>
+                    </article>
+                    <!-- Card 4 -->
+                    <article class="benefit-card" id="benefit-4">
+                        <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check"><path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="m9 16 2 2 4-4" /></svg></div>
+                        <h3>Не сорвётесь. Дисциплина встроена в систему</h3>
+                        <p>Пошаговый алгоритм, который не даст вам слиться. Отмечайте выполненные тренировки и питание в удобном трекере. Дисциплина на автопилоте.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section section-light" id="how-it-works">
+            <div class="container">
+                <span class="section-badge">Простой старт</span>
+                <h2 class="section-title" id="howTitle">Как мы будем работать <span>эти 4 недели?</span></h2>
+                <div class="steps-grid">
+                    <div class="step-card" id="step-1">
+                        <div class="step-num">1</div>
+                        <h3>Получаете доступ</h3>
+                        <p>Сразу после оплаты вы получаете доступ в удобный личный кабинет со всеми материалами.</p>
+                    </div>
+                    <div class="step-card" id="step-2">
+                        <div class="step-num">2</div>
+                        <h3>Получаете план на 4 недели</h3>
+                        <p>Трекер привычек + ваш рацион — всё готово к старту.</p>
+                    </div>
+                    <div class="step-card" id="step-3">
+                        <div class="step-num">3</div>
+                        <h3>Тренируетесь</h3>
+                        <p>Тренируетесь в любое удобное для вас время. Доступ к видеотренировкам 24/7.</p>
+                    </div>
+                    <div class="step-card" id="step-4">
+                        <div class="step-num">4</div>
+                        <h3>Видите, как меняется тело</h3>
+                        <p>Первые -2–3 кг и заметный объём уже к концу второй недели.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="section" id="reviews">
+            <div class="container">
+                <span class="section-badge">Отзывы клиентов</span>
+                <h2 class="section-title">Истории <span>успеха и трансформации</span></h2>
+                <!-- Кнопка разворачивания отзывов -->
+                <div class="reviews-toggle-wrapper">
+                    <button class="btn btn-secondary btn-reviews-toggle" id="toggleReviewsBtn">
+                        Посмотреть истории успеха
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down icon-inline toggle-arrow"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                </div>
+
+                <!-- Сворачиваемая область отзывов -->
+                <div class="reviews-collapse" id="reviewsCollapse">
+                    <div class="reviews-slider-container">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <!-- Review 1 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_1.webp" alt="Результат Светланы: до и после программы" class="review-image" loading="eager" width="1024" height="1024">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«Постройнела на 10 кг — и кожа подтягивается»</p>
+                                <p class="review-text">«Катя, благодаря тебе у меня полностью изменились привычки. Я питаюсь здоровой пищей, легко себя чувствую, постройнела на 10 кг и легко двигаюсь! Кожа подтягивается, изменился и посвежел цвет лица. Огромное спасибо!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Светлана, 35 лет</h4>
+                                    <span>Снижение веса (-10 кг), улучшение состояния кожи</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_3.webp" alt="Результат Анны: до и после программы" class="review-image" loading="lazy" width="1024" height="1024">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«Без голодовок ушли отёки и проявился красивый рельеф»</p>
+                                <p class="review-text">«Долго не могла убрать лишние объёмы на животе и бёдрах. С Катиным конструктором питания и тренировками лёд наконец тронулся! Без голодовок тело подтянулось, ушли отёки и проявился красивый рельеф. Результат на фото говорит сам за себя!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Анна, 27 лет</h4>
+                                    <span>Улучшение качества тела, плоский живот и рельеф</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_2.webp" alt="Скриншот отзыва клиента" class="review-image review-image-chat" loading="lazy" width="1024" height="1024">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«Ушли проблемы со здоровьем, появилось ощущение легкости»</p>
+                                <p class="review-text">«Хочу сказать слова благодарности Кате. Благодаря правильно подобранному рациону ушли проблемы со здоровьем, появилось ощущение легкости и бодрости. Чувствую себя на все 100%! Огромное спасибо за поддержку!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Ирина, 44 года</h4>
+                                    <span>Индивидуальное ведение, новые здоровые привычки</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_4.webp" alt="Отзыв Натальи: скриншот из переписки" class="review-image review-image-chat" loading="lazy" width="707" height="707">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«Питание разнообразное, вкусное, сытное и радует результат!»</p>
+                                <p class="review-text">«Всю неделю питалась по меню. Понравилось, что разнообразно, вкусно и сытно. С непривычки хотелось что-то пожевать, но понимала, что есть не хочу. Главное — радует результат! Набрав 76 кг, начала сама потихоньку снижать вес, а под чутким руководством Кати есть уверенность, что делаю всё правильно!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Наталья, 38 лет</h4>
+                                    <span>Снижение веса, избавление от вредных привычек</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_5.webp" alt="Отзыв Татьяны: скриншот из переписки" class="review-image review-image-chat" loading="lazy" width="587" height="587">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«Свирепого голода не было ни разу, ушли объемы в талии»</p>
+                                <p class="review-text">«Начала питание по плану около двух недель назад. Вес пошел вниз медленно, но без скачков: с отметки ~65 кг сегодня вес около 61,5 кг. Отражение в зеркале радует, особенно в талии. В теле чувствуется легкость, свирепого голода не было ни разу!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Татьяна, 31 год</h4>
+                                    <span>Результат за 2 недели (-3.5 кг), уменьшение объемов талии</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 6 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_6.webp" alt="Отзыв Марины: скриншот из переписки" class="review-image review-image-chat" loading="lazy" width="1024" height="1024">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«Главное — не надо думать, что приготовить!»</p>
+                                <p class="review-text">«Питание превзошло ожидания. Думала будет тяжело, оказалось просто и легко. Главное — не надо думать, что приготовить! Уровень энергии оставался стабильным в течение дня, хватало сил на тренировку. Никаких приступов переедания. Всё супер!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Марина, 26 лет</h4>
+                                    <span>Питание без чувства голода, стабильная энергия</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 7 -->
+                        <div class="review-slide">
+                            <div class="review-image-wrapper">
+                                <img src="review_7.webp" alt="Отзыв Евгении: скриншот из переписки" class="review-image review-image-chat" loading="lazy" width="544" height="544">
+                            </div>
+                            <div>
+                                <div class="review-rating" aria-label="Оценка: 5 звёзд">
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                    <svg class="lucide lucide-star" style="width: 16px; height: 16px; fill: currentColor;" aria-hidden="true"><use href="#icon-star"/></svg>
+                                </div>
+                                <p class="review-headline">«За 4 недели поняла принцип питания, ем без срывов и ограничений»</p>
+                                <p class="review-text">«Катя, спасибо огромное! За эти 4 недели мне стал очень понятен принцип питания, чтобы не есть всё подряд. Было вкусно и разнообразно, без ограничений и резких скачков веса. На корпоративе ела умеренно, не набрасывалась на еду. Раньше бы всё с тарелки попробовала, а теперь нет такого!»</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-info">
+                                    <h4>Евгения, 33 года</h4>
+                                    <span>4 недели программы, контроль аппетита без срывов</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-controls">
+                        <button class="slider-btn prev" aria-label="Предыдущий отзыв">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6" /></svg>
+                        </button>
+                        <button class="slider-btn next" aria-label="Следующий отзыв">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6" /></svg>
+                        </button>
+                    </div>
+                    <div class="slider-dots" id="sliderDots" aria-label="Пагинация отзывов"></div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Rates Section -->
+        <section class="section section-light" id="rates">
+            <div class="container">
+                <span class="section-badge">Варианты участия</span>
+                <h2 class="section-title">Программы <span>и тарифы ведения</span></h2>
+
+                <div class="programs-list">
+                    
+                    <!-- Карточка 1: БАЗОВЫЙ УРОВЕНЬ -->
+                    <div class="card" id="card-1">
+                        <div class="card-left">
+                            <img src="katya_base.webp" alt="Екатерина Пономарева — курс База" class="card-base-img" width="1024" height="1024">
+                        </div>
+                        <div class="card-right">
+                            <div class="card-label">Базовый уровень</div>
+                            <h3 class="card-title">Питание на 4 недели</h3>
+                            <p class="card-desc">
+                                Внутри — план питания и гибкий Конструктор, где вы сами меняете
+                                продукты на любимые, плюс система контроля привычек. Вы управляете
+                                процессом и получаете результат без голода, срывов и жёстких запретов.
+                            </p>
+                            <div class="card-actions">
+                                <a href="cart.html?plan=self" class="btn btn-primary">Начать самостоятельно — 1&nbsp;500&nbsp;₽</a>
+                                <span class="old-price">2&nbsp;790&nbsp;₽</span>
+                                <span class="discount-badge">−46%</span>
+                                <button class="btn btn-secondary btn-toggle" data-target="features-1">подробнее</button>
+                            </div>
+                            <p class="price-context">≈ стоимость пары обедов в кафе — за 4 недели плана питания</p>
+                            <div class="card-features" id="features-1">
+                                <ul class="features-list">
+                                    <li>4 недели (28 дней) доступа к закрытому личному кабинету.</li>
+                                    <li>Гибкий Конструктор питания с точными порциями — ешьте то, что любите, и худейте.</li>
+                                    <li>Готовые меню на каждый из 28 дней — не нужно думать, что приготовить.</li>
+                                    <li>Рецепты с подсчитанными калориями и понятными граммовками.</li>
+                                    <li>Трекер прогресса и привычек, чтобы не сойти с дистанции.</li>
+                                    <li>Тренировки в тариф не входят — их можно добавить в кабинете отдельно.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 2: КУРАТОР (ПОПУЛЯРНО) -->
+                    <div class="card card--popular card--reverse" id="card-2">
+                        <div class="card-left">
+                            <img src="katya_advanced_v3.webp" alt="Екатерина Пономарева — курс Кураторство" class="card-base-img" width="1024" height="1024" loading="lazy">
+                        </div>
+                        <div class="card-right">
+                            <div class="card-label">
+                                Продвинутый уровень
+                                <span class="label-separator">·</span>
+                                <span class="badge-popular">Популярно</span>
+                            </div>
+                            <h3 class="card-title">Домашние тренировки с планом питания</h3>
+                            <p class="card-desc">
+                                Доступ к полной системе: питание + тренировки. Внутри — план питания,
+                                гибкий Конструктор и комплексные домашние тренировки, которые ускоряют
+                                похудение и моделируют фигуру. Всё для того, чтобы вы увидели результат
+                                быстрее.
+                            </p>
+                            <div class="card-actions">
+                                <a href="cart.html?plan=curator" class="btn btn-primary">Хочу с поддержкой — 3&nbsp;500&nbsp;₽</a>
+                                <span class="old-price">5&nbsp;990&nbsp;₽</span>
+                                <span class="discount-badge">−42%</span>
+                                <button class="btn btn-secondary btn-toggle" data-target="features-2">подробнее</button>
+                            </div>
+                            <p class="price-context">≈ стоимость 1 похода в ресторан — за 4 недели программы</p>
+                            <div class="card-features" id="features-2">
+                                <ul class="features-list">
+                                    <li>Полный доступ в кабинет на 4 недели: 12 домашних тренировок + питание.</li>
+                                    <li>Гибкий Конструктор питания и готовые меню на каждый из 28 дней.</li>
+                                    <li>Рецепты с подсчитанными калориями и понятными граммовками.</li>
+                                    <li>Трекер прогресса и привычек, чтобы держать ритм.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 3: МАКСИМУМ -->
+                    <div class="card card--premium" id="card-3">
+                        <div class="card-left">
+                            <img src="katya_max_v3.webp" alt="Екатерина Пономарева — курс Максимум" class="card-base-img" width="1024" height="1024" loading="lazy">
+                        </div>
+                        <div class="card-right">
+                            <div class="card-label">
+                                Максимальный результат
+                                <span class="label-separator">·</span>
+                                <span class="badge-premium">Премиум</span>
+                            </div>
+                            <h3 class="card-title">Максимум домашних тренировок с Питанием</h3>
+                            <p class="card-desc">
+                                Максимальный, индивидуальный формат: полная программа (12 тренировок +
+                                питание на 4 недели), моё личное ежедневное кураторство и персональное
+                                ведение тет-а-тет — отвечаю на вопросы, разбираю технику и составляю
+                                меню и нагрузку под вас.
+                            </p>
+                            <div class="card-actions">
+                                <a href="cart.html?plan=vip" class="btn btn-primary">Хочу индивидуально — 8&nbsp;500&nbsp;₽</a>
+                                <span class="old-price">13&nbsp;990&nbsp;₽</span>
+                                <span class="discount-badge">−39%</span>
+                                <button class="btn btn-secondary btn-toggle" data-target="features-3">подробнее</button>
+                            </div>
+                            <p class="price-context">≈ стоимость 1-2 персональных тренировок — за 4 недели индивидуальной работы</p>
+                            <div class="card-features" id="features-3">
+                                <ul class="features-list">
+                                    <li>Полная программа: 12 домашних тренировок + питание на 4 недели в кабинете.</li>
+                                    <li>Моё личное ежедневное кураторство — отвечаю на любые вопросы по тренировкам и питанию.</li>
+                                    <li>Личный закрытый чат со мной в Telegram / Max (общение тет-а-тет).</li>
+                                    <li>Индивидуальный разбор техники упражнений по вашим видео.</li>
+                                    <li>Персонально составляю и адаптирую меню и программу под ваши цели, вкусы и образ жизни.</li>
+                                    <li>Еженедельные разборы прогресса для корректировки плана.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 4: ТЕСТ-ДРАЙВ (БЕСПЛАТНО) -->
+                    <div class="card card--reverse" id="card-4">
+                        <div class="card-left">
+                            <img src="katya_free_v3.webp" alt="Екатерина Пономарева — Бесплатный курс" class="card-base-img" width="1024" height="1024" loading="lazy">
+                        </div>
+                        <div class="card-right">
+                            <div class="card-label">
+                                Тест-драйв
+                                <span class="label-separator">·</span>
+                                <span class="discount-badge badge-gift">Подарок</span>
+                            </div>
+                            <h3 class="card-title">Бесплатный тест-драйв системы</h3>
+                            <p class="card-desc">
+                                Попробуйте систему на практике: 3 дня полного доступа в личный кабинет —
+                                2 домашние тренировки и питание на все 3 дня. Бесплатно, без карты.
+                            </p>
+                            <div class="card-actions">
+                                <a href="cart.html?plan=free" class="btn btn-primary btn-primary--free">Попробовать бесплатно — 0&nbsp;₽</a>
+                                <button class="btn btn-secondary btn-toggle" data-target="features-4">подробнее</button>
+                            </div>
+                            <p class="price-context">3 дня · 2 тренировки · питание на 3 дня — бесплатно</p>
+                            <div class="card-features" id="features-4">
+                                <ul class="features-list">
+                                    <li>3 дня полного доступа в личный кабинет (дни 1–3 программы).</li>
+                                    <li>2 полноценные домашние видеотренировки в записи — для любого уровня подготовки.</li>
+                                    <li>Питание на все 3 дня: готовое меню с граммовками и калориями.</li>
+                                    <li>Знакомство с личным кабинетом и системой трекинга прогресса.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Widgets Section -->
+        <section class="section widgets-section" id="widgets">
+            <div class="container">
+                <div class="widgets-grid">
+
+                    <!-- КАРТОЧКА 1: СОЦСЕТИ -->
+                    <div class="widget-card card--socials" id="widget-socials">
+                        <h2 class="card-title">Подпишитесь<br>на мои соцсети</h2>
+                        <div class="card-action">
+                            <div class="icons-row">
+                                <!-- Telegram -->
+                                <a href="https://t.me/kkatyafit" target="_blank" rel="noopener noreferrer" class="btn-icon btn-icon--tg" title="Telegram">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                                    </svg>
+                                </a>
+                                <!-- VK -->
+                                <a href="https://vk.ru/id201181278" target="_blank" rel="noopener noreferrer" class="btn-icon btn-icon--vk" title="ВКонтакте">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.587-1.496c.596-.189 1.362 1.259 2.174 1.815.613.42 1.079.328 1.079.328l2.172-.03s1.136-.07.598-.964c-.044-.073-.314-.661-1.618-1.869-1.366-1.265-1.183-1.06.462-3.246.998-1.328 1.398-2.14 1.273-2.487-.119-.331-.856-.244-.856-.244l-2.454.015s-.182-.025-.317.056c-.133.079-.218.264-.218.264s-.392 1.044-.914 1.933c-1.103 1.876-1.544 1.976-1.724 1.86-.418-.272-.314-1.092-.314-1.674 0-1.82.276-2.58-.537-2.777-.27-.066-.468-.109-1.158-.116-.884-.009-1.632.003-2.055.21-.282.138-.499.446-.367.464.164.022.535.1.731.368.253.345.244 1.121.244 1.121s.145 2.142-.339 2.407c-.332.182-.787-.19-1.765-1.893-.501-.873-.879-1.838-.879-1.838s-.073-.179-.203-.274c-.158-.116-.378-.153-.378-.153l-2.334.015s-.35.01-.479.163c-.114.135-.009.416-.009.416s1.839 4.304 3.924 6.47c1.912 1.987 4.085 1.857 4.085 1.857h.984z"/>
+                                    </svg>
+                                </a>
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/kkatyafit" target="_blank" rel="noopener noreferrer" class="btn-icon btn-icon--ig" title="Instagram">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- КАРТОЧКА 2: ДИПЛОМЫ -->
+                    <div class="widget-card card--diplomas" id="widget-diplomas">
+                        <h2 class="card-title">Мое обучение<br>и дипломы</h2>
+                        <div class="card-action">
+                            <a href="trainer.html#trainer-diplomas" class="btn-dark">смотреть</a>
+                        </div>
+                    </div>
+
+                    <!-- КАРТОЧКА 3: ВОПРОСЫ И ОТВЕТЫ -->
+                    <div class="widget-card card--faq" id="widget-faq">
+                        <h2 class="card-title">Вопросы<br>и ответы</h2>
+                        <div class="card-action">
+                            <a href="faq.html" class="btn-dark">смотреть</a>
+                        </div>
+                    </div>
+
+                    <!-- КАРТОЧКА 4: ПОДДЕРЖКА -->
+                    <div class="widget-card card--support" id="widget-support">
+                        <h2 class="card-title">Остались вопросы —<br>напишите нам</h2>
+                        <div class="card-action">
+                            <button class="btn-dark" data-modal-open="modal-support">написать в поддержку</button>
+                            <div class="icons-row">
+                                <!-- Support TG -->
+                                <a href="https://t.me/kkatyafit" target="_blank" rel="noopener noreferrer" class="btn-icon btn-icon--tg" title="Чат в Telegram">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                                    </svg>
+                                </a>
+                                <!-- Support Max -->
+                                <a href="https://max.ru/u/f9LHodD0cOL_nPAxwNr-JeUQYJxZEZRCx8kKf3l1foQo6MIj9U1iUxHugfk" target="_blank" rel="noopener noreferrer" class="btn-icon btn-icon--chat" title="Чат в Max">
+                                    <svg viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3c-4.97 0-9 4.03-9 9 0 1.84.55 3.55 1.5 4.98L3.5 20.5l3.65-.91C8.52 20.48 10.2 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                                    </svg>
+                                </a>
+                                <!-- Support Instagram -->
+                                <a href="https://www.instagram.com/kkatyafit" target="_blank" rel="noopener noreferrer" class="btn-icon btn-icon--ig" title="Написать в Instagram">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL SUPPORT CHAT -->
+    <div class="modal-overlay" id="modal-support" role="dialog" aria-modal="true" aria-labelledby="support-modal-title" inert>
+        <div class="modal-box">
+            <button class="modal-close" aria-label="Закрыть">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 1l10 10M11 1L1 10"/>
+                </svg>
+            </button>
+            
+            <!-- Form State -->
+            <div id="support-form-state">
+                <h3 class="modal-ttl" id="support-modal-title">Написать в поддержку</h3>
+                <p class="modal-desc">Выберите удобный мессенджер для ответа и задайте ваш вопрос. Наша команда ответит в течение 15 минут.</p>
+
+                <form id="supportForm">
+                    <div class="form-group">
+                        <span class="form-label" id="channel-group-label">Способ связи для ответа</span>
+                        <div class="contact-channels" role="radiogroup" aria-labelledby="channel-group-label">
+                            <div class="channel-opt selected" data-channel="Telegram" role="radio" aria-checked="true" tabindex="0">
+                                <svg viewBox="0 0 24 24" style="color: #0088cc;" aria-hidden="true"><path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                                <span>Telegram</span>
+                            </div>
+                            <div class="channel-opt" data-channel="Max" role="radio" aria-checked="false" tabindex="0">
+                                <svg viewBox="0 0 24 24" style="color: #7a5cff;" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 3c-4.97 0-9 4.03-9 9 0 1.84.55 3.55 1.5 4.98L3.5 20.5l3.65-.91C8.52 20.48 10.2 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>
+                                <span>Max</span>
+                            </div>
+                            <div class="channel-opt" data-channel="Звонок" role="radio" aria-checked="false" tabindex="0">
+                                <svg viewBox="0 0 24 24" style="color: #5e7a64;" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                <span>Телефон</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="selected-channel" name="channel" value="Telegram">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="support-name">Ваше Имя</label>
+                        <input type="text" class="form-input" id="support-name" name="name" autocomplete="given-name" placeholder="Введите имя" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="support-contact">Телефон / Никнейм в TG</label>
+                        <input type="text" class="form-input" id="support-contact" name="contact" autocomplete="tel" placeholder="+7 (999) 000-00-00 или @username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="support-message">Ваш вопрос</label>
+                        <textarea class="form-input" id="support-message" name="message" placeholder="Опишите ваши вопросы по тренировкам или оплате..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">отправить запрос</button>
+                </form>
+            </div>
+
+            <!-- Success State -->
+            <div id="support-success-state" class="success-panel">
+                <div class="success-icon">✉️</div>
+                <h4 class="success-title">Запрос отправлен!</h4>
+                <p class="success-text">Спасибо за обращение. Наш куратор ответит вам в указанный канал связи (<strong id="result-channel-display">Telegram</strong>) в течение ближайшего времени.</p>
+                <button class="btn btn-primary" style="margin-top: 24px; width: 100%;" data-modal-close="modal-support">отлично</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
