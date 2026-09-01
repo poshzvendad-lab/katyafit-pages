@@ -1,0 +1,929 @@
+/* ============================================================
+   KatyaFit — 02 home: hero, программы/тарифы, CTA
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* ============================================================
+   HERO — Editorial Premium Layout
+   Название продукта → крупное фото-карточка + плашка результата
+   ============================================================ */
+.hero {
+    height: calc(100vh - 100px);
+    min-height: 600px;
+    max-height: 880px;
+    display: flex;
+    align-items: stretch;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: var(--bg-milk);
+    position: relative;
+    overflow: hidden;
+    margin-top: calc(100px + env(safe-area-inset-top, 0px)); /* = высота header (+ безопасная зона в webview) */
+}
+
+/* Тёплая радиальная подсветка для глубины */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(closest-side, rgba(201, 169, 110, 0.10), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Full-width grid: текст | фото */
+.hero-editorial {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+}
+
+/* Левая панель — фон и выравнивание по контейнеру */
+.hero-content {
+    display: flex;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-right: 3.5rem;
+    padding-left: max(2.5rem, calc((100vw - 1300px) / 2 + 2.5rem));
+    position: relative;
+    z-index: 2;
+}
+
+/* Изнутри ограничиваем ширину текстового блока */
+.hero-content-inner {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Плашка-название продукта */
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.2px;
+    color: var(--accent-coral-hover);
+    margin-bottom: 1.6rem;
+    background: var(--accent-coral-light);
+    padding: 0.5rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+}
+
+.hero-eyebrow .icon-inline {
+    margin: 0;
+    color: var(--accent-coral);
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 3.4vw + 0.6rem, 4.15rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1.5px;
+    color: var(--accent-forest);
+}
+
+/* Вторая строка заголовка — золотой акцент-градиент */
+.hero-title-accent {
+    display: block;
+    font-weight: 700;
+    font-size: 0.62em;
+    margin-top: 0.7rem;
+    background: linear-gradient(100deg, var(--accent-coral-hover), var(--accent-coral) 60%, #d8bd8a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.hero-title .hero-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.92em;
+    color: var(--accent-forest);
+}
+
+/* Тире в диапазоне «5–10» — отступы, чтобы не «вытекало» из цифр */
+.hero-title .hero-dash {
+    margin: 0 0.12em;
+    font-weight: 500;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 470px;
+}
+
+.hero-subtitle strong {
+    color: var(--accent-forest-medium);
+    font-weight: 600;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Мелкая сноска-условие под кнопками: результат не гарантирован, зависит от следования плану */
+.hero-disclaimer {
+    margin-top: 1.1rem;
+    max-width: 470px;
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    opacity: 0.75;
+}
+
+.hero--dark .hero-disclaimer {
+    color: var(--light-muted);
+}
+
+/* Соц-доказательство под кнопками */
+.hero-proof {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.hero-proof-stars {
+    color: var(--accent-coral);
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+}
+
+.hero-proof-text strong {
+    color: var(--accent-forest-medium);
+    font-weight: 700;
+}
+
+/* Hero features list */
+.hero-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.hero-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.96rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+.hero-features li strong {
+    color: var(--accent-forest-medium);
+    font-weight: 600;
+}
+
+/* Иконка-кружок в буллете */
+.hero-feat-ic {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent-coral-light);
+    color: var(--accent-coral-hover);
+    border: 1px solid rgba(201, 169, 110, 0.20);
+}
+
+/* ===== Правая панель — крупное фото в рамке-карточке ===== */
+.hero-photo-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 3rem 2.5rem 1rem;
+    position: relative;
+}
+
+.hero-photo-frame {
+    position: relative;
+    height: 100%;
+    max-height: 740px;
+    aspect-ratio: 853 / 1280;
+    display: flex;
+}
+
+/* Декоративная золотая «подложка» со сдвигом — editorial-глубина */
+.hero-photo-decor {
+    position: absolute;
+    inset: 0;
+    transform: translate(26px, 26px);
+    border-radius: 32px;
+    background: linear-gradient(150deg, var(--accent-champagne), var(--accent-coral-light));
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    z-index: 0;
+}
+
+.hero-photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 6%;
+    border-radius: 32px;
+    box-shadow: var(--shadow-hover);
+    display: block;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.hero-photo-frame:hover .hero-photo {
+    transform: translateY(-6px);
+}
+
+/* Плавающая плашка-результат поверх фото */
+.hero-photo-badge {
+    position: absolute;
+    left: -22px;
+    bottom: 34px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 1.1rem 0.7rem 0.7rem;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(26, 31, 28, 0.14);
+}
+
+.hero-badge-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(140deg, var(--accent-coral), var(--accent-coral-hover));
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px rgba(201, 169, 110, 0.35);
+}
+
+.hero-badge-text {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    line-height: 1.25;
+    color: var(--text-muted);
+    max-width: 130px;
+}
+
+.hero-badge-text strong {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--accent-forest);
+    margin-bottom: 2px;
+}
+
+/* ============================================================
+   HERO — Dark Premium variant (.hero--dark)
+   Тёмный «ink + золото» как тариф «Максимум». Тема включается
+   классом .hero--dark на секции и .theme-dark на <body> (шапка).
+   ============================================================ */
+.hero--dark {
+    background:
+        radial-gradient(120% 120% at 82% -10%, #2b322c 0%, #20251f 46%, #161a17 100%);
+}
+
+/* Золотое сияние сверху-справа (сильнее базового) */
+.hero--dark::before {
+    background: radial-gradient(closest-side, rgba(201, 169, 110, 0.18), transparent 70%);
+}
+
+/* Тёплый шалфейный отсвет снизу-слева для глубины */
+.hero--dark::after {
+    content: '';
+    position: absolute;
+    bottom: -28%;
+    left: -12%;
+    width: 55%;
+    height: 120%;
+    background: radial-gradient(closest-side, rgba(125, 155, 130, 0.10), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero--dark .hero-eyebrow {
+    color: var(--accent);
+    background: rgba(201, 169, 110, 0.10);
+    border-color: rgba(201, 169, 110, 0.30);
+}
+.hero--dark .hero-eyebrow .icon-inline { color: var(--accent); }
+
+.hero--dark .hero-title { color: var(--light); }
+.hero--dark .hero-title-accent {
+    background: linear-gradient(100deg, #e7cf9b, #c9a96e 55%, #b8964f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero--dark .hero-title .hero-num { color: var(--accent); }
+
+.hero--dark .hero-subtitle { color: var(--light-muted); }
+.hero--dark .hero-subtitle strong { color: var(--light); }
+
+.hero--dark .hero-features li { color: var(--light-muted); }
+.hero--dark .hero-features li strong { color: var(--light); }
+.hero--dark .hero-feat-ic {
+    background: rgba(201, 169, 110, 0.12);
+    color: var(--accent);
+    border-color: rgba(201, 169, 110, 0.28);
+}
+
+/* Контурная кнопка — светлая на тёмном */
+.hero--dark .btn-secondary {
+    color: var(--light);
+    border-color: rgba(234, 230, 222, 0.35);
+}
+.hero--dark .btn-secondary:hover:not(:disabled) {
+    background: var(--light);
+    color: var(--bg-deep);
+    border-color: var(--light);
+}
+
+.hero--dark .hero-proof { color: var(--light-muted); }
+.hero--dark .hero-proof-stars { color: var(--accent); }
+.hero--dark .hero-proof-text strong { color: var(--light); }
+
+/* Кадрирование для профильного фото с разворотом (katya_hero_dark.webp) */
+.hero--dark .hero-photo {
+    object-position: 40% 8%;
+}
+
+/* Фото — люминесцентная карточка с золотым кантом и глубокой тенью */
+.hero--dark .hero-photo {
+    box-shadow:
+        0 34px 70px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(201, 169, 110, 0.28);
+}
+/* Декор-подложка превращается в тонкую золотую рамку-обводку */
+.hero--dark .hero-photo-decor {
+    background: none;
+    border: 1.5px solid rgba(201, 169, 110, 0.38);
+}
+/* Плашка-результат — тёмное стекло */
+.hero--dark .hero-photo-badge {
+    background: rgba(26, 31, 28, 0.72);
+    border-color: rgba(201, 169, 110, 0.28);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+}
+.hero--dark .hero-badge-text { color: var(--light-muted); }
+.hero--dark .hero-badge-text strong { color: var(--light); }
+
+/* ===== Тёмная шапка — единый стиль для ВСЕХ страниц (body.header-dark) =====
+   Источник истины для чёрной шапки. Раньше дублировалось в .theme-dark и
+   .page-trainer; теперь одно определение, класс header-dark вешается на body
+   каждой страницы. Footer/hero у index по-прежнему через .theme-dark ниже. */
+.header-dark .header {
+    background: rgba(22, 26, 23, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.header-dark .header-scrolled {
+    background: rgba(22, 26, 23, 0.97);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+.header-dark .logo { color: var(--light); }
+.header-dark .logo span { color: var(--accent); }
+.header-dark .nav-link { color: var(--light); }
+.header-dark .nav-link::after { background-color: var(--accent); }
+.header-dark .nav-link--active { color: var(--accent); }
+.header-dark .btn-nav.btn-secondary {
+    color: var(--light);
+    border-color: rgba(234, 230, 222, 0.4);
+}
+.header-dark .btn-nav.btn-secondary:hover {
+    background: var(--accent);
+    color: var(--bg-deep);
+    border-color: var(--accent);
+}
+.header-dark .menu-toggle-icon,
+.header-dark .menu-toggle-icon::before,
+.header-dark .menu-toggle-icon::after {
+    background-color: var(--light);
+}
+
+/* Мобильное меню — кремовый фон, поэтому ссылки тёмные (иначе .header-dark .nav-link белит их) */
+.header-dark .mobile-nav .nav-link { color: var(--accent-forest); }
+.header-dark .mobile-nav .nav-link--active { color: var(--accent-coral); }
+
+/* ===== Тёмный футер (.theme-dark) ===== */
+/* Ink-black, глубже стандартного --accent-forest */
+.theme-dark .footer {
+    background-color: #0f1210;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+}
+
+/* Логотип в футере */
+.theme-dark .footer-logo { color: var(--light); }
+.theme-dark .footer-logo span { color: var(--accent); }
+
+/* Теглайн */
+.theme-dark .footer-tagline { color: rgba(234, 230, 222, 0.55); }
+
+/* Соцсети — иконки с золотым ховером */
+.theme-dark .footer-social-btn {
+    background: rgba(201, 169, 110, 0.08);
+    border-color: rgba(201, 169, 110, 0.18);
+    color: rgba(234, 230, 222, 0.6);
+}
+.theme-dark .footer-social-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0f1210;
+}
+
+/* Навигация */
+.theme-dark .footer-nav-heading { color: var(--accent); }
+.theme-dark .footer-nav a { color: rgba(234, 230, 222, 0.55); }
+.theme-dark .footer-nav a:hover { color: var(--accent); opacity: 1; }
+
+/* CTA блок */
+.theme-dark .footer-cta-text { color: var(--light); }
+
+/* Разделитель и копирайт */
+.theme-dark .footer-top { border-bottom-color: rgba(201, 169, 110, 0.12); }
+.theme-dark .footer-copy { color: rgba(234, 230, 222, 0.3); }
+
+/* ===== Переход: тёмный герой → светлые секции ===== */
+/* Тонкая золотая линия-разделитель — визуальная точка отсчёта */
+.hero--dark {
+    border-bottom: 1px solid rgba(201, 169, 110, 0.22);
+}
+
+/* Первая секция после тёмного героя: слегка приглушённый фон
+   чтобы переход был мягче, не резал как два разных мира */
+.theme-dark ~ main > .section:first-child,
+.theme-dark main > .section:first-child {
+    background: #faf9f6;
+}
+
+/* ===== PROGRAMS LIST CONTAINER ===== */
+.programs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 1rem;
+}
+
+.card {
+    font-family: var(--font-ui);
+    background: var(--bg-pure);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    min-height: 330px;
+    width: 100%;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-soft);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 169, 110, 0.2);
+    box-shadow: 
+        0 24px 48px rgba(26, 31, 28, 0.07),
+        0 0 0 1px rgba(201, 169, 110, 0.06);
+}
+
+/* Популярная карточка (Кураторство) — нейтральный серо-тёмный акцент */
+.card--popular {
+    border-color: rgba(62, 74, 64, 0.28);
+    border-top: 4px solid var(--accent-forest-medium);
+    background: linear-gradient(180deg, rgba(62, 74, 64, 0.05) 0%, var(--bg-pure) 100px);
+    box-shadow: 0 4px 20px rgba(26, 31, 28, 0.06);
+}
+
+.card--popular:hover {
+    border-color: rgba(62, 74, 64, 0.42);
+    box-shadow:
+        0 28px 56px rgba(26, 31, 28, 0.09),
+        0 0 0 1px rgba(62, 74, 64, 0.14);
+}
+
+/* Премиальная карточка (Максимум) — золотой акцент */
+.card--premium {
+    border-color: rgba(201, 169, 110, 0.45);
+    border-top: 4px solid var(--accent-coral);
+    background: linear-gradient(180deg, rgba(201, 169, 110, 0.07) 0%, var(--bg-pure) 120px);
+    box-shadow: 0 4px 20px rgba(201, 169, 110, 0.10);
+}
+
+.card--premium:hover {
+    border-color: var(--accent-coral);
+    box-shadow:
+        0 28px 56px rgba(26, 31, 28, 0.10),
+        0 0 0 1px rgba(201, 169, 110, 0.18);
+}
+
+/* Премиум: золотой акцент названия и подписи тарифа */
+.card--premium .card-label {
+    color: var(--accent-coral-hover);
+}
+
+/* Перевернутая карточка (для десктопа) */
+@media (min-width: 721px) {
+    .card--reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Левая панель с изображением */
+.card-left {
+    flex: 0 0 48%;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff; /* Clean white background for all cards */
+}
+
+.card-left img {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* Повышенная специфичность вместо !important */
+.card-left .card-base-img {
+    inset: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Filter to blow out light grey background to pure white (used for Card 2) */
+.blend-bg {
+    mix-blend-mode: multiply;
+    filter: contrast(1.15) brightness(1.08);
+}
+
+/* Border tweaks for list features — только при открытом состоянии */
+#card-2 .card-features.open,
+#card-3 .card-features.open {
+    border-top-color: rgba(26, 31, 28, 0.15);
+}
+
+/* Subtle transition divider for card 3 */
+#card-3 .card-left {
+    border-right: 1px solid rgba(26, 31, 28, 0.05);
+}
+@media (max-width: 720px) {
+    #card-3 .card-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(26, 31, 28, 0.05);
+    }
+}
+
+/* Правая панель с текстом */
+.card-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.75rem 2.5rem;
+}
+
+.card-label {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #5e7a64;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Бейдж «Популярно» — серо-тёмный нейтральный */
+.badge-popular {
+    background: var(--accent-forest-medium);
+    color: #fff;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+/* Бейдж «Премиум» — золото с тёмным текстом */
+.badge-premium {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, var(--accent-coral-hover) 100%);
+    color: var(--accent-forest);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.22;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.3px;
+}
+
+.card-desc {
+    font-size: 0.82rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+}
+
+/* Кнопки и цены */
+.card-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card .btn {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 600;
+    height: 46px;
+    padding: 0 1.875rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    border: none;
+    outline: none;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.card .btn-primary {
+    background: var(--accent-coral);
+    color: var(--text-main);
+    box-shadow: 0 6px 18px rgba(201, 169, 110, 0.22);
+}
+
+.card .btn-primary:hover {
+    background: var(--accent-coral-hover);
+    transform: scale(1.03);
+    box-shadow: 0 10px 24px rgba(201, 169, 110, 0.3);
+}
+
+.old-price {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.6;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+}
+
+/* Старая цена в карточке выбранного тарифа (рендерится из js/cart.js) */
+.price-old-val {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.6;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    margin-left: 0.5rem;
+}
+
+.price-context {
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+.label-separator {
+    color: #555;
+    font-weight: 600;
+}
+
+.discount-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #5e7a64;
+    background: #e6efe3;
+    border-radius: 20px;
+    padding: 3px 9px;
+}
+
+/* Голубой бейдж «Подарок» для карточки Тест-драйв */
+.badge-gift {
+    background: #e3edfb;
+    color: #2b66ff;
+}
+
+.card .btn-secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 1.5px solid rgba(26, 31, 28, 0.2);
+}
+
+.card .btn-secondary:hover {
+    border-color: var(--text-main);
+    background: var(--text-main);
+    color: var(--bg-pure);
+    transform: scale(1.03);
+}
+
+.card .btn-secondary:active {
+    transform: scale(0.98);
+}
+
+/* Выпадающий список возможностей (подробнее) */
+/* max-height transition — плавно открывается И закрывается */
+.card-features {
+    margin-top: 20px;
+    padding-top: 0;
+    border-top: 1px solid transparent;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.25s ease,
+        padding-top 0.3s ease,
+        border-top-color 0.25s ease;
+}
+
+.card-features.open {
+    max-height: 500px;
+    opacity: 1;
+    padding-top: 18px;
+    border-top-color: var(--border-color);
+}
+
+.features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+}
+
+.features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    text-align: left;
+}
+
+.features-list li::before {
+    content: '✓';
+    color: #5e7a64;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Адаптивность для планшетов и мобильных */
+@media (max-width: 720px) {
+    .card {
+        flex-direction: column;
+        min-height: auto;
+        border-radius: 18px;
+    }
+    .card:hover { 
+        transform: none; 
+    }
+
+    .card-left {
+        height: 220px;
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .card-right { 
+        padding: 28px 28px 34px; 
+    }
+    
+    .card-title  { 
+        font-size: 19px; 
+    }
+    
+    .card-desc   { 
+        font-size: 13px; 
+        margin-bottom: 18px; 
+    }
+}
+
+@media (max-width: 440px) {
+    .card-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 12px 8px;
+        width: 100%;
+    }
+    
+    .card .btn {
+        width: 100%;
+    }
+    
+    .card-actions .btn-primary {
+        grid-column: 1 / -1;
+    }
+    
+    .card-actions .btn-toggle {
+        grid-column: 1 / -1;
+    }
+    
+    .card-actions .old-price {
+        grid-column: 1;
+        justify-self: end;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+    
+    .card-actions .discount-badge {
+        display: inline-block;
+        grid-column: 2;
+        justify-self: start;
+        font-size: 0.75rem;
+    }
+}
+
+/* ===== Синяя CTA-кнопка для карточки «Тест-драйв» ===== */
+.card .btn-primary--free {
+    background: #2b66ff;
+    box-shadow: 0 6px 18px rgba(43, 102, 255, 0.22);
+}
+
+.card .btn-primary--free:hover {
+    background: #1a54ee;
+    transform: scale(1.03);
+    box-shadow: 0 10px 24px rgba(43, 102, 255, 0.32);
+}
+
+/* ===== Доступность: стиль фокуса при навигации с клавиатуры ===== */
+.card .btn:focus-visible {
+    outline: 2px solid var(--accent-coral);
+    outline-offset: 3px;
+}
+
+.card .btn-primary--free:focus-visible {
+    outline-color: #2b66ff;
+}
+
