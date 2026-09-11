@@ -1,0 +1,860 @@
+/* ============================================================
+   KatyaFit — 07 trainer: страница тренера (hero, философия, сертификаты, CTA, модалки)
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* ============================================================
+   TRAINER PAGE — Dark Sage & Warm Gold (Redesign 3.0)
+   Страница тренера остаётся на тёмном фоне,
+   остальной сайт — светлая кремово-золотая палитра.
+   ============================================================ */
+
+/* Тёмная база страницы тренера */
+body.page-trainer {
+    background-color: var(--bg-deep);
+    color: var(--light);
+}
+
+/* Тёмная шапка теперь общая для всего сайта — см. .header-dark в home.css
+   (body.page-trainer тоже несёт класс header-dark). */
+
+.page-trainer .section-badge {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-glow);
+}
+
+/* Варианты для светлых секций страницы тренера */
+.section-badge--dark {
+    color: var(--accent-hover);
+    background: var(--accent-soft);
+    border-color: var(--accent-glow);
+}
+
+.section-title--dark {
+    color: var(--ink);
+}
+
+.section-title--dark span {
+    color: var(--ink-muted);
+}
+
+/* ── Hero — Dark Sage Background ──────────────────────────── */
+.trainer-hero-section {
+    background: var(--bg-deep);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle radial gold glow */
+.trainer-hero-section::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -15%;
+    width: 70%;
+    height: 160%;
+    background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.04) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.trainer-hero-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.trainer-photo-wrapper {
+    position: relative;
+    padding-right: 1.25rem;
+    padding-bottom: 1.5rem;
+}
+
+/* Золотая декор-подложка — тёмный аналог .hero-photo-decor с главной */
+.trainer-photo-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 1.25rem;
+    bottom: 1.5rem;
+    transform: translate(18px, 18px);
+    border-radius: 32px;
+    background: linear-gradient(150deg, rgba(201, 169, 110, 0.22), rgba(201, 169, 110, 0.07));
+    border: 1px solid rgba(201, 169, 110, 0.28);
+    z-index: 0;
+}
+
+.trainer-photo-box {
+    position: relative;
+    z-index: 1;
+    border-radius: 32px;
+    overflow: hidden;
+    aspect-ratio: 9 / 10;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.30),
+                0 0 0 1px rgba(201, 169, 110, 0.15);
+    background: var(--bg-surface);
+}
+
+.trainer-photo-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 55%;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.trainer-photo-box:hover img {
+    transform: scale(1.03);
+}
+
+.trainer-photo-badge {
+    position: absolute;
+    bottom: -1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: 50px;
+    padding: 0.65rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.trainer-photo-badge svg {
+    color: var(--accent);
+}
+
+.trainer-bio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.trainer-name {
+    font-size: clamp(2.4rem, 4vw + 1rem, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 0.5rem;
+    color: var(--light);
+}
+
+.trainer-name span {
+    display: block;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent) 0%, #ddb875 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.trainer-tagline {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--light-muted);
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+}
+
+/* Кликабельные слова тайтла → Instagram */
+.trainer-tagline a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.25s var(--ease-out);
+}
+.trainer-tagline a:hover,
+.trainer-tagline a:focus-visible {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.trainer-intro-text {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--light-muted);
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+}
+
+.trainer-intro-text strong {
+    color: var(--light);
+    font-weight: 600;
+}
+
+/* Glassmorphism stat cards */
+.trainer-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.trainer-stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-dark);
+    border-radius: 20px;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s var(--ease-out),
+                box-shadow 0.5s var(--ease-out),
+                border-color 0.4s ease,
+                background-color 0.4s ease;
+}
+
+.trainer-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--sage));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.trainer-stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent-glow);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.trainer-stat-card:hover::before {
+    opacity: 1;
+}
+
+.trainer-stat-card .stat-num {
+    font-family: var(--font-ui);
+    font-size: clamp(1.85rem, 2.8vw, 2.25rem);
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.trainer-stat-card .stat-label {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--light-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 1.4;
+}
+
+/* ── Philosophy / Approach — Light Section ────────────────── */
+.trainer-philosophy-section {
+    background: var(--bg-cream);
+    text-align: center;
+}
+
+.trainer-philosophy-section .section-badge--dark {
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    border-color: var(--accent-glow);
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    text-align: left;
+}
+
+.philosophy-card {
+    background: var(--bg-pure);
+    border: 1px solid var(--border-light);
+    padding: 2.75rem 2.5rem;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s var(--ease-out),
+                box-shadow 0.5s var(--ease-out),
+                border-color 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.philosophy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--sage));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out);
+}
+
+.philosophy-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-glow);
+}
+
+.philosophy-card:hover::before {
+    transform: scaleX(1);
+}
+
+.philosophy-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.4s var(--ease-out);
+}
+
+.philosophy-card:hover .philosophy-icon {
+    background: var(--accent);
+    color: var(--bg-pure);
+    transform: scale(1.05);
+}
+
+.philosophy-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.85rem;
+}
+
+.philosophy-card p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink-muted);
+}
+
+/* ── Certificates / Experience Slider ─────────────────────── */
+.trainer-certificates-section {
+    background: var(--bg-cream);
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+}
+
+.trainer-certificates-section .section-title {
+    color: var(--ink);
+}
+
+.trainer-certificates-section .section-title span {
+    color: var(--ink-muted);
+}
+
+.trainer-certificates-section .section-badge {
+    color: var(--accent-hover);
+    background: var(--accent-soft);
+    border-color: var(--accent-glow);
+}
+
+.certificates-slider-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--border-light);
+    background: var(--bg-pure);
+}
+
+/* Контейнер слайдера переиспользует .card — нейтрализуем его hover-эффекты */
+.certificates-slider-container.card,
+.certificates-slider-container.card:hover {
+    transform: none;
+    min-height: 0;
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-light);
+}
+
+/* Тёмная информационная панель */
+.certificates-info-side {
+    background: var(--bg-deep);
+    color: var(--light);
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.certificates-info-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+}
+
+.certificates-info-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--light-muted);
+}
+
+.certificates-list-detailed {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.certificates-list-detailed li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 0.92rem;
+    color: var(--light);
+    line-height: 1.5;
+}
+
+.certificates-list-detailed li svg {
+    color: var(--accent);
+}
+
+.certificates-list-detailed li strong {
+    color: var(--light);
+    font-weight: 600;
+}
+
+.certificates-list-detailed li span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--light-muted);
+    margin-top: 0.1rem;
+}
+
+.certificates-slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.certificates-slider-controls .slider-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s var(--ease-out);
+}
+
+.certificates-slider-controls .slider-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: var(--bg-deep);
+    transform: scale(1.08);
+}
+
+.certificates-slider-controls .slider-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.certificates-slider-controls .slider-counter {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--light-muted);
+    letter-spacing: 1.5px;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Точки пагинации сертификатов — только мобайл (на десктопе боковые стрелки) */
+.certificates-slider-dots {
+    display: none;
+}
+
+/* Окно слайдера — светлый фон для документов */
+.certificates-slider-view {
+    position: relative;
+    overflow: hidden;
+    background: #edeae4;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: stretch;
+}
+
+.certificates-slider-track {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.certificates-slider-track::-webkit-scrollbar {
+    display: none;
+}
+
+.certificates-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f2f0eb;
+    position: relative;
+    scroll-snap-align: start;
+    cursor: pointer;
+    padding: 2.5rem;
+}
+
+.certificates-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+    border-radius: 8px;
+    transition: transform 0.5s var(--ease-out),
+                box-shadow 0.5s var(--ease-out);
+}
+
+.certificates-slide:hover img {
+    transform: scale(1.02);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.14);
+}
+
+.slide-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 31, 28, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    gap: 0.75rem;
+}
+
+.certificates-slide:hover .slide-hover-overlay {
+    opacity: 1;
+}
+
+.slide-hover-overlay svg {
+    color: var(--accent);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.slide-hover-overlay span {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ── CTA Section — Dark Background ────────────────────────── */
+.trainer-cta-section {
+    background: var(--bg-deep);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.trainer-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 90%;
+    background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.05) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.trainer-cta-section .section-title {
+    color: var(--light);
+}
+
+.trainer-cta-section .section-title span {
+    color: var(--light-muted);
+}
+
+.trainer-cta-section .btn-secondary {
+    color: var(--light);
+    border-color: rgba(234, 230, 222, 0.3);
+}
+
+.trainer-cta-section .btn-secondary:hover:not(:disabled) {
+    background-color: var(--light);
+    color: var(--bg-deep);
+    border-color: var(--light);
+}
+
+.trainer-cta-block {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.trainer-cta-text {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--light-muted);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+}
+
+.trainer-cta-btns {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ── Certificate Viewer Modal (wide) ──────────────────────── */
+.modal-box--wide {
+    max-width: 750px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    padding: 35px 30px 30px;
+}
+
+.modal-img-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-milk);
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+    padding: 10px;
+}
+
+.modal-img-wrapper img {
+    max-width: 100%;
+    max-height: 60vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Trainer page responsive ──────────────────────────────── */
+@media (max-width: 1024px) {
+    .certificates-slider-container {
+        grid-template-columns: 1fr 1.1fr;
+    }
+    .trainer-hero-grid {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .certificates-slider-container {
+        grid-template-columns: 1fr;
+    }
+    .certificates-info-side {
+        border-bottom: 1px solid var(--border-dark);
+        padding: 2.5rem 2rem;
+    }
+    #trainer-diplomas .certificates-slider-view {
+        aspect-ratio: 4/3;
+        height: auto;
+    }
+    /* На мобильных боковые стрелки/счётчик прячем — листается свайпом,
+       вместо них показываем точки пагинации под изображениями */
+    .certificates-slider-controls {
+        display: none;
+    }
+    .certificates-slider-dots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1.5rem 0 1.75rem;
+        padding: 0 1rem;
+    }
+    .certificates-slider-dots .slider-dot {
+        width: 8px;
+        height: 8px;
+    }
+    .certificates-slider-dots .slider-dot.active {
+        width: 20px;
+        background-color: var(--accent);
+    }
+}
+
+@media (max-width: 900px) {
+    .trainer-hero-grid {
+        grid-template-columns: 1fr;
+        /* запас, чтобы плашка «Сертифицированный специалист» (свисает из-под
+           фото) не липла к бейджу «О тренере» */
+        gap: 3.75rem;
+    }
+    .trainer-photo-wrapper {
+        max-width: 380px;
+        margin: 0 auto;
+    }
+    .trainer-bio {
+        align-items: center;
+        text-align: center;
+    }
+    .trainer-intro-text {
+        text-align: left;
+    }
+    .trainer-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.85rem;
+    }
+    .trainer-stat-card {
+        padding: 1.25rem 0.75rem;
+    }
+    .trainer-stat-card .stat-num {
+        font-size: 1.5rem;
+    }
+    .trainer-stat-card .stat-label {
+        font-size: 0.65rem;
+    }
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    .philosophy-card {
+        padding: 2rem 1.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .trainer-photo-wrapper {
+        max-width: 300px;
+    }
+    .trainer-photo-badge {
+        font-size: 0.72rem;
+        padding: 0.55rem 1.1rem;
+    }
+    .trainer-bio {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .trainer-bio .section-badge {
+        align-self: flex-start;
+    }
+    /* Кнопка «Выбрать программу» — по центру экрана на мобильных */
+    #trainer-cta-btn {
+        align-self: center;
+    }
+    .trainer-stats-grid {
+        gap: 0.65rem;
+    }
+    .certificates-info-side {
+        padding: 2rem 1.5rem;
+    }
+    .certificates-info-title {
+        font-size: 1.2rem;
+    }
+    .trainer-cta-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    .trainer-cta-btns .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 54px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trainer-name {
+        font-size: clamp(1.75rem, 8vw, 2.2rem);
+    }
+    .trainer-stats-grid {
+        gap: 0.5rem;
+    }
+    .trainer-stat-card {
+        padding: 1rem 0.5rem;
+        border-radius: 14px;
+    }
+    .trainer-stat-card .stat-num {
+        font-size: 1.35rem;
+    }
+    .trainer-stat-card .stat-label {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+    .certificates-slider-controls .slider-btn {
+        width: 52px;
+        height: 52px;
+    }
+    .modal-box--wide {
+        width: 100%;
+        padding: 28px 16px 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .trainer-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+    }
+    .trainer-stat-card {
+        flex-direction: row;
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+        text-align: left;
+    }
+    .trainer-stat-card .stat-num {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+}
+
