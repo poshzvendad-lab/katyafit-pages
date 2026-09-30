@@ -1,0 +1,622 @@
+/* ============================================================
+   KatyaFit — 03 sections: for-whom, benefits, steps, reviews
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* For Whom (Target) Section */
+.target-list {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.target-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.25rem 3rem;
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.target-item:hover {
+    border-color: rgba(201, 169, 110, 0.2);
+    border-left: 3px solid var(--accent-coral);
+    box-shadow: var(--shadow-hover);
+    transform: translateX(6px);
+}
+
+.target-icon {
+    color: var(--accent-coral);
+    background: var(--accent-coral-light);
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.target-item:hover .target-icon {
+    background-color: var(--accent-coral);
+    color: var(--bg-pure);
+    transform: scale(1.08);
+}
+
+.target-item p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--accent-forest);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Benefits Grid (Program Content) */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.benefit-card {
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    padding: 3.5rem 3rem;
+    border-radius: 24px;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.benefit-card:hover {
+    border-color: rgba(26, 31, 28, 0.12);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-coral-light);
+    color: var(--accent-coral);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    transition: var(--transition-smooth);
+}
+
+.benefit-card:hover .benefit-icon {
+    background-color: var(--accent-forest);
+    color: var(--bg-pure);
+    box-shadow: 0 6px 16px rgba(26, 31, 28, 0.15);
+}
+
+.benefit-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2;
+}
+
+.benefit-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--accent-forest);
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+/* Steps Grid (How It Works) */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    position: relative;
+}
+
+.steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(12.5% + 32px);
+    right: calc(12.5% + 32px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-coral), var(--accent-champagne));
+    z-index: 0;
+}
+
+.step-card {
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.step-num {
+    width: 64px;
+    height: 64px;
+    background: var(--accent-forest);
+    color: var(--bg-pure);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 auto 1.75rem;
+    font-family: var(--font-ui);
+    box-shadow: 0 8px 20px rgba(26, 31, 28, 0.15);
+    transition: var(--transition-smooth);
+}
+
+.step-card:hover .step-num {
+    transform: scale(1.1);
+    background-color: var(--accent-coral);
+    box-shadow: 0 10px 24px rgba(201, 169, 110, 0.25);
+}
+
+.step-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.step-card p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    max-width: 240px;
+    margin: 0 auto;
+}
+
+/* Reviews Collapsible Block */
+.reviews-collapse {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    width: 100%;
+}
+
+.reviews-collapse.open {
+    max-height: 1500px;
+    opacity: 1;
+}
+
+.reviews-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn-reviews-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    padding: 1rem 2.2rem;
+}
+
+.btn-reviews-toggle .toggle-arrow {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: 0;
+}
+
+.btn-reviews-toggle.active .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+/* Reviews Slider — нативный Scroll Snap */
+.reviews-slider-container {
+    position: relative;
+    padding: 1.5rem 0;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE/Edge */
+    cursor: grab;
+    user-select: none;
+    /* Без touch-action: браузер сам управляет свайпом нативно */
+}
+
+.reviews-track::-webkit-scrollbar {
+    display: none;               /* Chrome/Safari */
+}
+
+.reviews-track:active {
+    cursor: grabbing;
+}
+
+.review-slide {
+    flex: 0 0 100%;              /* не сжимается, ширина = 100% трека */
+    scroll-snap-align: start;    /* привязка к началу каждого слайда */
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    padding: 3.5rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-slide:hover {
+    border-color: rgba(26, 31, 28, 0.12);
+    box-shadow: var(--shadow-hover);
+}
+
+.review-image-wrapper {
+    width: 100%;
+    height: 460px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-milk);
+}
+
+.review-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: var(--transition-smooth);
+}
+
+.review-slide:hover .review-image {
+    transform: scale(1.02);
+}
+
+/* review-headline: styled via class instead of inline */
+.review-headline {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--accent-forest);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.review-rating {
+    display: flex;
+    gap: 6px;
+    color: var(--accent-coral);
+    margin-bottom: 1.5rem;
+}
+
+.review-text {
+    font-style: normal;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-coral-light);
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.review-author-info h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent-forest);
+}
+
+.review-author-info span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+}
+
+.slider-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent-forest);
+    background: transparent;
+    color: var(--accent-forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.slider-btn:hover:not(:disabled) {
+    background-color: var(--accent-forest);
+    color: var(--bg-pure);
+    transform: scale(1.05);
+}
+
+.slider-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-color: var(--border-color);
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0;
+}
+
+.slider-dot:hover {
+    background-color: var(--accent-forest-light);
+    transform: scale(1.2);
+}
+
+.slider-dot.active {
+    background-color: var(--accent-forest);
+    transform: scale(1.2);
+    width: 24px;
+    border-radius: 6px;
+}
+
+/* ============================================
+   INSIDE CABINET («Что внутри кабинета», index)
+   Витрина скриншотов личного кабинета.
+   Все классы cab-* живут только в этой секции —
+   существующие стили сайта не трогаем.
+   ============================================ */
+
+.cab-lead {
+    color: var(--text-muted);
+    max-width: 56ch;
+    margin: -2.25rem 0 0.5rem; /* подтянуть к заголовку: у .section-title нижний отступ 3.5rem */
+    font-size: 1.05rem;
+}
+
+.cab-feature {
+    display: grid;
+    gap: 1.75rem;
+    align-items: center;
+    padding: 2.75rem 0;
+}
+
+.cab-feature + .cab-feature {
+    border-top: 1px solid var(--border-color);
+}
+
+.cab-shots {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cab-phone {
+    margin: 0;
+    width: min(46%, 220px);
+    padding: 7px;
+    border-radius: 26px;
+    background: var(--accent-forest);
+    box-shadow: var(--shadow-premium);
+}
+
+.cab-phone img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.cab-phone--lift {
+    transform: translateY(20px);
+}
+
+.cab-text h3 {
+    font-size: clamp(1.35rem, 2.2vw + 0.5rem, 1.8rem);
+    margin-bottom: 1rem;
+}
+
+.cab-list {
+    list-style: none;
+    margin: 0 0 1.4rem;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+}
+
+.cab-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.cab-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 13px;
+    height: 7px;
+    border-left: 2px solid var(--accent-forest-light);
+    border-bottom: 2px solid var(--accent-forest-light);
+    transform: rotate(-45deg);
+}
+
+.cab-pill {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-coral-hover);
+    background: var(--accent-coral-light);
+    border-radius: 50px;
+    padding: 0.45rem 1.1rem;
+}
+
+/* Полоса удобства (приложение / вход по коду / для телефона) */
+.cab-strip {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 2.75rem;
+}
+
+.cab-strip-cell {
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem 1.15rem;
+}
+
+.cab-strip-cell b {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    color: var(--accent-forest);
+}
+
+.cab-strip-cell p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.87rem;
+    line-height: 1.55;
+}
+
+/* Тёмная сводка «что в каком тарифе» + CTA */
+.cab-tiers {
+    background: var(--accent-forest);
+    color: var(--bg-cream);
+    border-radius: 24px;
+    padding: clamp(1.6rem, 4vw, 2.75rem);
+    margin-top: 2.5rem;
+}
+
+.cab-tiers > h3 {
+    color: var(--bg-cream);
+    font-size: clamp(1.35rem, 2.2vw + 0.5rem, 1.75rem);
+    margin-bottom: 1.4rem;
+}
+
+.cab-tiers > h3 span {
+    color: var(--accent-coral);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.cab-tier-row {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.cab-tier {
+    border: 1px solid rgba(247, 245, 240, 0.16);
+    border-radius: 14px;
+    padding: 1.05rem 1.15rem;
+}
+
+.cab-tier-name {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-coral);
+}
+
+.cab-tier-price {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0.15rem 0 0.4rem;
+}
+
+.cab-tier p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: rgba(247, 245, 240, 0.75);
+}
+
+.cab-try {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 1.6rem;
+}
+
+/* Кнопка-обводка на тёмном фоне сводки (только внутри .cab-tiers) */
+.cab-tiers .btn-secondary {
+    color: var(--bg-cream);
+    border-color: rgba(247, 245, 240, 0.45);
+}
+
+.cab-tiers .btn-secondary:hover:not(:disabled) {
+    background-color: var(--bg-cream);
+    border-color: var(--bg-cream);
+    color: var(--accent-forest);
+}
+
+.cab-tiers-note {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+    color: rgba(247, 245, 240, 0.65);
+}
+
+@media (min-width: 760px) {
+    .cab-strip {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cab-tier-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .cab-feature {
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        padding: 3.5rem 0;
+    }
+
+    .cab-feature--flip .cab-shots {
+        order: 2;
+    }
+}
+

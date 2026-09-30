@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Анти-кликджекинг: X-Frame-Options пропал на GitHub Pages -> фрейм-бастер (frame-ancestors в <meta> игнорируется). -->
+    <script src="js/frame-buster.js?v=4.0.33"></script>
+    <title>Бесплатный тест-драйв | Екатерина Пономарёва (@kkatyafit)</title>
+    <meta name="description" content="3 дня программы бесплатно: 2 домашние тренировки и питание. Напишите Екатерине в Telegram или Max — она откроет доступ лично.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://katyafit.ru/test-drive.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Бесплатный тест-драйв | Екатерина Пономарёва (@kkatyafit)">
+    <meta property="og:description" content="3 дня программы бесплатно: 2 тренировки и питание. Доступ открываю лично в Telegram или Max.">
+    <meta property="og:image" content="https://katyafit.ru/katya_hero.webp">
+    <meta property="og:url" content="https://katyafit.ru/test-drive.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg?v=4.0.33" type="image/svg+xml">
+    <link rel="icon" href="favicon.png?v=4.0.33" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4.0.33">
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#1a1f1c">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/base.css?v=4.0.33">
+    <link rel="stylesheet" href="css/home.css?v=4.0.33">
+    <link rel="stylesheet" href="css/sections.css?v=4.0.33">
+    <link rel="stylesheet" href="css/forms.css?v=4.0.33">
+    <link rel="stylesheet" href="css/footer.css?v=4.0.33">
+    <link rel="stylesheet" href="css/widgets.css?v=4.0.33">
+    <link rel="stylesheet" href="css/trainer.css?v=4.0.33">
+    <link rel="stylesheet" href="css/trainer-experience.css?v=4.0.33">
+
+    <!-- CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https://mc.yandex.ru; connect-src 'self' https://api.telegram.org https://mc.yandex.ru https://*.ingest.de.sentry.io; frame-ancestors 'none';">
+
+    <!-- Sentry: автосбор JS-ошибок -> Telegram (проект landing, org katyafitru; тот же воркфлоу, что у кабинета) -->
+    <script src="js/vendor/sentry.js?v=4.0.33"></script>
+    <script src="js/sentry-init.js?v=4.0.33"></script>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+</head>
+<body class="header-dark">
+
+    <noscript>
+        <div style="text-align:center; padding:2rem; background:#f9f7f4; color:#2a2c2b; font-family:sans-serif;">
+            Для корректной работы сайта необходимо включить JavaScript в настройках браузера.
+        </div>
+    </noscript>
+
+    <!-- Тест-драйв с 30.09.2026 открывает Катя лично, после переписки в
+         Telegram (раньше форма открывала его сама — из 7 человек ни одна не
+         прошла даже День 1). Сюда ведут все кнопки «Попробовать бесплатно»
+         и старые ссылки cart.html?plan=free. -->
+    <main class="main-subpage td-main">
+        <section class="section trainer-cta-section td-section" id="test-drive">
+            <div class="container">
+                <div class="trainer-cta-block">
+                    <span class="section-badge">Тест-драйв · 0&nbsp;₽</span>
+                    <h1 class="section-title">Бесплатные 3 дня <span>открываю лично</span></h1>
+                    <p class="trainer-cta-text">
+                        Напишите мне в Telegram или Max — отвечу на ваши вопросы, подскажу, с чего начать,
+                        и открою первые 3 дня программы: 2 домашние тренировки и питание.
+                        Без карты и без оплаты.
+                    </p>
+
+                    <ol class="td-steps">
+                        <li><span><b>Напишите мне в Telegram или Max</b> — например: «Хочу тест-драйв».</span></li>
+                        <li><span><b>Я отвечу</b> и попрошу почту, на которую открыть доступ.</span></li>
+                        <li><span><b>Войдите в личный кабинет</b> по этой почте — дни 1–3 будут ждать вас.</span></li>
+                    </ol>
+
+                    <!-- Max — та же ссылка, что в контактах index.html и cart.html. -->
+                    <div class="trainer-cta-btns">
+                        <a href="https://t.me/kkatyafit" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="td-telegram">Написать в Telegram</a>
+                        <a href="https://max.ru/u/f9LHodD0cOL_nPAxwNr-JeUQYJxZEZRCx8kKf3l1foQo6MIj9U1iUxHugfk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="td-max">Написать в Max</a>
+                    </div>
+
+                    <p class="td-note">
+                        Нет ни Telegram, ни Max? Напишите в Instagram —
+                        <a href="https://www.instagram.com/kkatyafit" target="_blank" rel="noopener noreferrer">@kkatyafit</a>.<br>
+                        <a href="index.html#rates" id="td-rates">Или сразу выберите тариф →</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/components.js?v=4.0.33" defer></script>
+    <script src="js/main.js?v=4.0.33" defer></script>
+</body>
+</html>
