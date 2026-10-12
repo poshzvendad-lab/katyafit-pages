@@ -1,0 +1,212 @@
+/* ============================================================
+   KatyaFit — 05 footer + утилиты: footer, scroll-reveal, focus-visible, reduced-motion
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* ============================================================
+   FOOTER — Redesigned (multi-column layout)
+   ============================================================ */
+.footer {
+    background-color: var(--accent-forest);
+    color: var(--bg-milk);
+    padding: 5rem 0 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 2.5rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.footer-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.footer-logo span {
+    color: var(--accent-coral);
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.7;
+    color: var(--bg-milk);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.footer-social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(247, 245, 240, 0.75);
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.footer-social-btn:hover {
+    background: var(--accent-coral);
+    border-color: var(--accent-coral);
+    color: var(--bg-pure);
+    transform: scale(1.1);
+}
+
+.footer-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.footer-nav-heading {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-coral);
+    margin-bottom: 0.25rem;
+}
+
+.footer-nav a {
+    font-size: 0.88rem;
+    color: var(--bg-milk);
+    opacity: 0.65;
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+    color: var(--accent-coral);
+}
+
+.footer-nav a.nav-link--active {
+    opacity: 1;
+    color: var(--accent-coral);
+    font-weight: 600;
+}
+
+.footer-cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.footer-cta-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bg-milk);
+    opacity: 0.9;
+}
+
+.footer-cta-btn {
+    white-space: nowrap;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.footer-copy {
+    font-size: 0.82rem;
+    opacity: 0.45;
+    color: var(--bg-milk);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ============================================================
+   SCROLL-REVEAL SYSTEM (Entrance animations with stagger)
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays via CSS custom property */
+.reveal[style*="--reveal-delay"] {
+    transition-delay: var(--reveal-delay);
+}
+
+/* ============================================================
+   FOCUS-VISIBLE (Accessible keyboard navigation)
+   ============================================================ */
+:focus-visible {
+    outline: 2px solid var(--accent-coral);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.btn:focus-visible {
+    outline-offset: 4px;
+    border-radius: 50px;
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION (Accessibility baseline)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+    body::after {
+        display: none;
+    }
+}
+

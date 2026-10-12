@@ -1,0 +1,494 @@
+/* ============================================================
+   KatyaFit — 01 base: токены, reset, типографика, layout, кнопки, шапка/навигация
+   Часть styles.css. Подключается на страницах в фиксированном порядке.
+   ============================================================ */
+
+/* ============================================================
+   KatyaFit — Premium Stylesheet (Visual Redesign 2.0 — 2025/2026 Trends)
+   ============================================================ */
+
+/* CSS Variables & Premium Design Tokens */
+:root {
+    /* Color Palette — Light cream base (Redesign 3.0: Cream, Gold & Sage) */
+    --bg-milk: #f7f5f0;             /* Warm cream (trainer palette) */
+    --bg-pure: #ffffff;             /* Pure white */
+    --text-main: #1a1f1c;           /* Deep ink with sage hint */
+    --text-muted: #6a645e;          /* Warm gray */
+
+    /* Sage Green Accents (ex-forest) */
+    --accent-forest: #232823;       /* Deep sage (headings, footer) */
+    --accent-forest-medium: #3e4a40;/* Medium sage */
+    --accent-forest-light: #7d9b82; /* Soft sage */
+
+    /* Warm Gold Accents (ex-coral) */
+    --accent-coral: #c9a96e;        /* Warm gold */
+    --accent-coral-hover: #b8964f;  /* Deeper gold for hover states */
+    --accent-coral-light: #f5efe2;  /* Gentle gold-cream tint */
+
+    /* Cream & Gold highlights */
+    --accent-champagne: #f3edd8;    /* Champagne gold cream */
+    --accent-champagne-dark: #ebdcb6;
+
+    /* Borders & Outlines */
+    --border-color: rgba(26, 31, 28, 0.08);
+    --border-color-focus: rgba(201, 169, 110, 0.4);
+
+    /* Premium Shadow Systems (layered, warm-tinted) */
+    --shadow-soft: 0 4px 16px rgba(26, 31, 28, 0.03), 0 1px 3px rgba(26, 31, 28, 0.02);
+    --shadow-premium: 0 8px 32px rgba(26, 31, 28, 0.05), 0 2px 8px rgba(26, 31, 28, 0.03);
+    --shadow-hover: 0 20px 48px rgba(26, 31, 28, 0.08), 0 4px 12px rgba(26, 31, 28, 0.04);
+
+    /* Trainer page dark theme tokens (Dark Sage & Warm Gold) */
+    --bg-deep: #1a1f1c;
+    --bg-surface: #232823;
+    --bg-elevated: #2d332e;
+    --bg-cream: #f7f5f0;
+    --accent: #c9a96e;
+    --accent-hover: #b8964f;
+    --accent-soft: rgba(201, 169, 110, 0.10);
+    --accent-glow: rgba(201, 169, 110, 0.18);
+    --sage: #7d9b82;
+    --sage-soft: rgba(125, 155, 130, 0.10);
+    --light: #eae6de;
+    --light-muted: #9a9690;
+    --ink: #1a1f1c;
+    --ink-muted: #6a645e;
+    --border-dark: rgba(255, 255, 255, 0.07);
+    --border-light: rgba(26, 31, 28, 0.08);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.10);
+    --shadow-gold: 0 8px 24px rgba(201, 169, 110, 0.20);
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+
+    /* Typography — Serif + Sans-serif pair */
+    --font-serif: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-title: var(--font-serif);
+    --font-display: var(--font-serif);
+    --font-ui: 'Plus Jakarta Sans', var(--font-sans);
+    
+    /* Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+    
+    --container-max-width: 1200px;
+
+    /* Backward Compatibility Aliases */
+    --accent-olive-dark: var(--accent-forest);
+    --accent-olive-medium: var(--accent-forest-medium);
+    --accent-olive-light: var(--accent-forest-light);
+    --accent-cream: var(--bg-milk);
+    --accent-cream-dark: var(--accent-champagne-dark);
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-milk);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Subtle grain texture for organic, handcrafted feel */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    mix-blend-mode: multiply;
+}
+
+/* Custom Selection Color */
+::selection {
+    background-color: var(--accent-coral-light);
+    color: var(--accent-forest);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--accent-forest);
+    letter-spacing: -0.01em;
+}
+
+/* Inline Icons alignment */
+.icon-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 1.1em;
+    height: 1.1em;
+    margin-right: 0.35em;
+    margin-top: -3px;
+    color: var(--accent-coral);
+}
+
+p {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+.section {
+    padding: clamp(4.5rem, 8vw, 10rem) 0;
+    position: relative;
+}
+
+.section-light {
+    background-color: var(--bg-pure);
+}
+
+/* Subpages main padding */
+.main-subpage {
+    padding-top: calc(130px + env(safe-area-inset-top, 0px));
+    min-height: calc(100vh - 165px - 90px);
+}
+
+/* Typography Components */
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent-coral);
+    margin-bottom: 1.25rem;
+    background: var(--accent-coral-light);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+}
+
+.section-title {
+    font-size: clamp(1.85rem, 3vw + 0.5rem, 3rem);
+    font-weight: 600;
+    margin-bottom: 3.5rem;
+    letter-spacing: -0.02em;
+    color: var(--accent-forest);
+}
+
+.section-title span {
+    color: var(--accent-forest-light);
+    font-weight: 400;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.1rem 2.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+    text-decoration: none;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary {
+    background-color: var(--accent-coral);
+    color: var(--text-main);
+    box-shadow: 0 8px 20px rgba(201, 169, 110, 0.18);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-coral-hover);
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(201, 169, 110, 0.28);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-forest);
+    border: 1.5px solid var(--accent-forest);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--accent-forest);
+    color: var(--bg-pure);
+    transform: scale(1.03);
+}
+
+/* Nav button */
+.btn-nav {
+    padding: 0.65rem 1.6rem;
+    font-size: 0.85rem;
+    border-radius: 50px;
+    border-width: 1.5px;
+}
+
+/* Full-width submit button */
+.btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1.2rem;
+}
+
+/* Header & Navigation (Floating Glass Effect) */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Высота + запас под «остров»/чёлку: в webview ВК/Telegram шапка
+       заливает безопасную зону сверху, не оставляя зазора (env=0 на десктопе) */
+    height: calc(100px + env(safe-area-inset-top, 0px));
+    padding-top: env(safe-area-inset-top, 0px);
+    background-color: rgba(247, 245, 240, 0.75);
+    /* Сильнее «замыливаем» зону под островом/чёлкой в webview ВК/Telegram,
+       чтобы сквозь шапку не просвечивал контент (blur 32 + насыщенность) */
+    backdrop-filter: blur(32px) saturate(1.1);
+    -webkit-backdrop-filter: blur(32px) saturate(1.1);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.header-scrolled {
+    height: calc(80px + env(safe-area-inset-top, 0px));
+    background-color: rgba(247, 245, 240, 0.92);
+    box-shadow: 0 8px 32px rgba(26, 31, 28, 0.03);
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-forest);
+    display: flex;
+    align-items: center;
+}
+
+.logo span {
+    font-weight: 300;
+    color: var(--accent-coral);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-forest);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-coral);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link--active::after {
+    width: 100%;
+}
+
+.nav-link--active {
+    color: var(--accent-coral);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 110;
+}
+
+.menu-toggle-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent-forest);
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent-forest);
+    left: 0;
+    transition: var(--transition-smooth);
+}
+
+.menu-toggle-icon::before { top: -7px; }
+.menu-toggle-icon::after  { bottom: -7px; }
+
+.menu-toggle.active .menu-toggle-icon {
+    background-color: transparent;
+}
+.menu-toggle.active .menu-toggle-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+    background-color: var(--accent-forest);
+}
+.menu-toggle.active .menu-toggle-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+    background-color: var(--accent-forest);
+}
+
+/* ============================================================
+   Cookie-согласие (152-ФЗ). Яндекс.Метрика грузится после «Принять».
+   Логика — js/components.js. Mobile-first: на узких экранах кнопки в столбик.
+   ============================================================ */
+.cookie-consent {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    z-index: 1200;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-hover);
+    transform: translateY(160%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .45s var(--ease-out), opacity .45s var(--ease-out);
+}
+.cookie-consent.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+.cookie-consent__text {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+.cookie-consent__text a {
+    color: var(--accent-coral-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.cookie-consent__actions {
+    display: flex;
+    gap: 10px;
+}
+.cookie-consent__btn {
+    flex: 1 1 auto;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .2s var(--ease-out),
+                border-color .2s var(--ease-out),
+                color .2s var(--ease-out);
+}
+.cookie-consent__btn--accept {
+    background: var(--accent-coral);
+    color: #fff;
+}
+.cookie-consent__btn--accept:hover {
+    background: var(--accent-coral-hover);
+}
+.cookie-consent__btn--decline {
+    background: transparent;
+    color: var(--text-muted);
+    border-color: var(--border-color);
+}
+.cookie-consent__btn--decline:hover {
+    border-color: var(--accent-forest-light);
+    color: var(--text-main);
+}
+@media (min-width: 560px) {
+    .cookie-consent {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        padding: 18px 24px;
+    }
+    .cookie-consent__text { flex: 1; }
+    .cookie-consent__actions { flex: 0 0 auto; }
+    .cookie-consent__btn { flex: 0 0 auto; }
+}
+
